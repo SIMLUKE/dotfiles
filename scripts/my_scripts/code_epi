@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/home/lukeskieur/Documents/epitech/coding-style-checker/coding-style.sh . /home/lukeskieur/Documents/epitech/coding-style-checker/
+
+cat /home/lukeskieur/Documents/epitech/coding-style-checker/coding-style-reports.log

@@ -1,0 +1,6 @@
+#! /bin/bash
+
+cp -r /home/lukeskieur/Documents/epitech/C_libs/* ./
+
+cp /home/lukeskieur/Documents/epitech/C_libs/.gitignore ./
+cp -r /home/lukeskieur/Documents/epitech/C_libs/.github ./

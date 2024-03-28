@@ -6,10 +6,11 @@ STOW	?=	stow
 
 TARGET	?=	$$HOME
 
-PACKAGES	=	emacs	\
+PACKAGES	=	cmake	\
+			emacs	\
 			swaylock-effects	\
 
-all: _zsh _emacs swaylock
+all: _zsh _emacs swaylock _wofi
 
 _zsh:
 	$(STOW) --target=$(TARGET) --restow zsh
@@ -19,5 +20,9 @@ _swaylock:
 	$(STOW) --target=$(TARGET) --restow swaylock
 _wofi:
 	$(STOW) --target=$(TARGET) --restow wofi
-dependencies:
+_hyprland:
+	$(STOW) --target=$(TARGET) --restow hyprland
+_scripts:
+	$(STOW) --target=$(TARGET) --restow scripts
+dependencies:w
 	sudo pacman -S $(PACKAGES)

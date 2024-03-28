@@ -1,0 +1,2 @@
+#!/bin/bash
+find -name "*.gcda" -delete -o -name "*.gcno" -delete -o -name "*.gcvo" -delete -o -name "coverage*" -delete
