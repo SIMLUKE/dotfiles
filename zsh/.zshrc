@@ -7,17 +7,28 @@ export PATH=$PATH:/home/lukeskieur/my_scripts/
 
 # Modifier for bug fixes
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export TERM=xterm-24bits
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
-#ZSH_THEME="pygmalion"
-#ZSH_THEME="darkblood"
 #ZSH_THEME="jonathan"
-ZSH_THEME="kphoen"
+#ZSH_THEME="kphoen"
+
+if [[ -n "$INSIDE_EMACS" ]]; then
+    export ZSH_THEME="kphoen"
+    if [[ $(pwd) = *'src'* || $(pwd) = *'include'* || $(pwd) = *'libs'* ]]; then
+        cd ../
+    fi
+else
+    export ZSH_THEME="kphoen"
+fi
 
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P0232323" #black
@@ -137,17 +148,32 @@ ne() {
     emacsclient -c -s tiny -a "" "$1" &
     disown
 }
+alias VSgui='emacsclient -c'
+
+get_core() {
+    pat="/var/lib/systemd/coredump/"
+    core=$(ls -t $pat | fzf)
+    conc=$pat$core
+    cp $conc ./
+    unzstd $core
+    rm $core
+}
 
 # TTY use of emacs
 alias nee='emacsclient -nw -s tiny'
 alias VSemacs='emacsclient -nw'
-alias VSgui='emacsclient -c'
 
 HIST_STAMPS="mm/dd/yyyy"
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+cd() {builtin cd "$@" &&
+          ls .
+}
+
+alias cp='cp -r'
+alias fman='compgen -c | fzf | xargs man'
+alias db='gdb --args'
+
 # Created by `pipx` on 2024-01-03 09:56:26
 export PATH="$PATH:/home/lukeskieur/.local/bin"
-
-alias shutnow="~/my_scripts/now.sh"
