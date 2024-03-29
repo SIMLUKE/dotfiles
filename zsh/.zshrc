@@ -7,7 +7,7 @@ export PATH=$PATH:/home/lukeskieur/my_scripts/
 
 # Modifier for bug fixes
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-export TERM=xterm-24bits
+# export TERM=xterm-24bits
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin

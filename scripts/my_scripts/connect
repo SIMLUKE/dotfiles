@@ -1,0 +1,5 @@
+if [[ $1 == "-h"]] then
+   echo './connect "email" "password"'
+   exit
+    
+nmcli connection add type wifi con-name IONIS ifname wlan0 ssid "IONIS" wifi-sec.key-mgmt wpa-eap 802-1x.eap peap 802-1x.identity "$1" 802-1x.password "$2" 802-1x.phase2-auth mschapv2
