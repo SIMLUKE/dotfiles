@@ -5,7 +5,6 @@
 # |____/ \_/\_/ \__,_|\__, |_|\___/ \___|_|\_\ 
 #                     |___/                    
 #  
-# by Stephan Raabe (2023) 
 # ----------------------------------------------------- 
 
 ignore-empty-password
@@ -25,9 +24,9 @@ screenshots
 fade-in=1
 
 # Effect for background
-effect-blur=5x2
-# effect-greyscale
-# effect-pixelate=5
+#effect-blur=5x2
+#effect-greyscale
+effect-pixelate=7
 
 # Show/Hide indicator circle
 indicator
@@ -43,7 +42,7 @@ indicator-caps-lock
 
 # Define all colors
 
-key-hl-color=00000066
+key-hl-color=0AFF0E
 separator-color=00000000
 
 inside-color=00000033
@@ -56,13 +55,13 @@ ring-color=ffffff
 ring-clear-color=ffffff
 ring-caps-lock-color=ffffff
 ring-ver-color=ffffff
-ring-wrong-color=ffffff
+ring-wrong-color=FF0004
 
 line-color=00000000
 line-clear-color=ffffffFF
 line-caps-lock-color=ffffffFF
 line-ver-color=ffffffFF
-line-wrong-color=ffffffFF
+line-wrong-color=FF0004
 
 text-color=ffffff
 text-clear-color=ffffff
@@ -73,4 +72,4 @@ bs-hl-color=ffffff
 caps-lock-key-hl-color=ffffffFF
 caps-lock-bs-hl-color=ffffffFF
 disable-caps-lock-text
-text-caps-lock-color=ffffff
+text-caps-lock-color=FF742E

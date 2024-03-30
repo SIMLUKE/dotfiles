@@ -1,0 +1,76 @@
+{
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 30
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "network": {
+        "interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "No wifi",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click": "nm-connection-editor"
+    },
+    "hyprland/workspaces" : {
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{}",
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+    "custom/logo": {
+        "format": "<span font='17' rise='-1000'></span>"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+    },
+    "mpris": {
+        "format": "{player_icon} {title} - {artist}",
+        "format-paused": "{status_icon} <i>{title} - {artist}</i>",
+        "player-icons": {
+            "default": "<span font='15' rise='-1000'>󰐊</span>",
+            "mpv": "<span font='15' rise='-1000'>🎵</span>"
+        },
+        "status-icons": {
+            "paused": "<span font='15' rise='-1000'>󰏤</span>"
+        },
+        "max-length": 50
+    },
+    "custom/skip": {
+        "format": "<span font='15' rise='-1000'>󰒭</span>",
+        "on-click": "playerctl next track"
+    },
+    "custom/go-back": {
+        "format": "<span font='15' rise='-1000'>󰒮</span>",
+        "on-click": "playerctl previous track"
+    }
+}

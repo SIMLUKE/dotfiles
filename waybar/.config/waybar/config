@@ -1,0 +1,11 @@
+{
+    "layer": "top",
+    "height": 35,
+
+    "include": ["~/.config/waybar/modules.json"],
+
+    "modules-left": ["custom/logo", "hyprland/workspaces"],
+    "modules-center": ["custom/go-back", "mpris", "custom/skip"],
+    "modules-right": ["network", "battery", "clock"]
+
+}

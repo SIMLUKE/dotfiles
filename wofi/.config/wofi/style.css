@@ -14,12 +14,12 @@ window {
     font-weight: bold;
     background-color: #1e1e2e;
    	outline: none;
-    border-radius: 15px;
     margin: 10px;
     margin-bottom: 2px;
 }
 #input:focus {
     border: 0px solid #1e1e2e;
+    border-radius: 15px;
     margin-bottom: 0px;
 }
 
@@ -28,8 +28,8 @@ window {
     border: 10px solid #1e1e2e;
     color: #cdd6f4;
     font-weight: bold;
-    background-color: #1e1e2e;
     border-radius: 15px;
+    background-color: #1e1e2e;
 }
 
 #outer-box {
@@ -37,6 +37,7 @@ window {
     border: none;
     border-radius: 15px;
     background-color: #1e1e2e;
+    border-radius: 15px;
 }
 
 #scroll {
