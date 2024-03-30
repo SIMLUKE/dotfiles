@@ -1,0 +1,56 @@
+* {
+    border: none;
+    font-size: 16px;
+    min-height: 0;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+window#waybar {
+    background: rgba(60, 59, 61, 0.7)
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#workspaces {
+    font-style: normal;
+    opacity: 0.8;
+    font-size: 16px;
+    color: #d0cdd4;
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 4px 3px;
+    border-bottom: 4px;
+    border-bottom-color: #c79bf2;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+}
+
+#workspaces button.active {
+    color: #d0cdd4;
+    background: #8c7c9c;
+    min-width: 40px;
+    border-bottom: 4px;
+    border-bottom-color: #c79bf2;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
+}
+
+#idle_inhibitor {
+}
+
+#idle_inhibitor.activated {
+    color: #525452;
+}
+
+#waybar-idle_inhibitor.deactivated {
+}

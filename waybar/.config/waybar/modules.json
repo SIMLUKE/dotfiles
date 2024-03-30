@@ -5,8 +5,8 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format": "{capacity}% {icon} ",
+        "format-charging": "{capacity}%  ",
         "format-icons": ["", "", "", "", ""],
         "max-length": 30
     },
@@ -16,7 +16,7 @@
     "network": {
         "interface": "wlan0",
         "format": "{ifname}",
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{essid} ({signalStrength}%)  ",
         "format-ethernet": "{ifname} ",
         "format-disconnected": "No wifi",
         "tooltip-format": "{ifname}",
@@ -36,7 +36,8 @@
         }
     },
     "custom/logo": {
-        "format": "<span font='17' rise='-1000'></span>"
+        "format": "<span font='17' rise='-1000'>  </span>",
+        "on-click": "~/my_scripts/logout.sh"
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
@@ -72,5 +73,53 @@
     "custom/go-back": {
         "format": "<span font='15' rise='-1000'>󰒮</span>",
         "on-click": "playerctl previous track"
+    },
+    "cpu": {
+        "format": "{usage}%  ",
+        "on-click": "alacritty -e htop"
+    },
+    "temperature": {
+        "format-critical": " | {temperatureC}°C  ",
+        "format": " | {temperatureC}°C "
+    },
+    "memory": {
+        "format": " | {}% 󰍛 |",
+        "on-click": "alacritty -e htop"
+    },
+    "disk": {
+        "interval": 30,
+        "format": "{percentage_used}% 󰨣",
+        "path": "/",
+        "on-click": "alacritty -e htop"
+    },
+    "group/hardware": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "disk",
+            "cpu",
+            "temperature",
+            "memory"
+        ]
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "",
+        "format-off": "",
+        "interval": 30,
+        "on-click": "blueman-manager",
+        "format-no-controller": ""
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "tooltip": true,
+        "format-icons":{
+            "activated": "󱙱",
+            "deactivated": "󰌾"
+        }
     }
 }

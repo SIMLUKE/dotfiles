@@ -1,11 +1,28 @@
 {
     "layer": "top",
     "height": 35,
+    "spacing": 12,
 
     "include": ["~/.config/waybar/modules.json"],
 
-    "modules-left": ["custom/logo", "hyprland/workspaces"],
-    "modules-center": ["custom/go-back", "mpris", "custom/skip"],
-    "modules-right": ["network", "battery", "clock"]
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces"
+    ],
 
+    "modules-center": [
+        "custom/go-back",
+        "mpris",
+        "custom/skip"
+    ],
+
+    "modules-right": [
+        "idle_inhibitor",
+        "bluetooth",
+        "pulseaudio",
+        "network",
+        "group/hardware",
+        "battery",
+        "clock"
+    ]
 }

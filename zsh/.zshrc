@@ -176,6 +176,7 @@ cd() {builtin cd "$@" &&
 alias cp='cp -r'
 alias fman='compgen -c | fzf | xargs man'
 alias db='gdb --args'
+alias dot="cd ~/dotfiles"
 
 # Created by `pipx` on 2024-01-03 09:56:26
 export PATH="$PATH:/home/lukeskieur/.local/bin"

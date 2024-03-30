@@ -22,13 +22,22 @@ PACKAGES	=	cmake	\
 			nerd-fonts	\
 			pulseaudio	\
 			pulseaudio-bluetooth	\
+			blueman	\
 			pavucontrol	\
+			inotify-tools	\
+			swappy	\
+			grim	\
+			xclip	\
+			slurp	\
+			xdg-user-dirs	\
+			brightnessctl	\
 
 YAY_PACKAGES	=	opera	\
 			deezer	\
 			ttf-font-logos	\
+			sddm-sugar-dark	\
 
-all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd
+all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _sddm
 
 _zsh:
 	$(STOW) --target=$(TARGET) --restow zsh
@@ -59,6 +68,12 @@ _waybar:
 _wpaperd:
 	$(STOW) --target=$(TARGET) --restow wallpaper
 
+_sddm:
+	sudo cp sddm/sddm.conf /etc/
+	sudo cp sddm/theme.conf /usr/share/sddm/themes/sugar-dark/
+	sudo cp sddm/Background.png /usr/share/sddm/themes/sugar-dark/
+	sudo cp sddm/Xsetup /usr/share/sddm/scripts/Xsetup
+
 wallpapers_install:
 	git clone https://github.com/danyspin97/wpaperd
 	cd ./wpaperd ; cargo build --release ; cargo install --path="./daemon" && cargo install --path="./cli"
@@ -72,3 +87,7 @@ dependencies:
 
 yay_dependencies:
 	yay -Sy $(YAY_PACKAGES)
+
+sys_calls:
+	sudo systemctl enable bluetooth
+	sudo systemctl start bluetooth
