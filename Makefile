@@ -37,7 +37,7 @@ YAY_PACKAGES	=	opera	\
 			ttf-font-logos	\
 			sddm-sugar-dark	\
 
-all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _sddm
+all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _sddm
 
 _zsh:
 	$(STOW) --target=$(TARGET) --restow zsh
@@ -66,7 +66,10 @@ _waybar:
 	$(STOW) --target=$(TARGET) --restow waybar
 
 _wpaperd:
-	$(STOW) --target=$(TARGET) --restow wallpaper
+	$(STOW) --target=$(TARGET) --restow wp_manager
+
+_kitty:
+	$(STOW) --target=$(TARGET) --restow kitty
 
 _sddm:
 	sudo cp sddm/sddm.conf /etc/
