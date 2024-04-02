@@ -4,7 +4,9 @@
 
 STOW	?=	stow --dotfiles
 
-TARGET	?=	$$HOME
+HOME	?=	$$HOME
+
+DOT_CONF	?=	$$HOME/.config/
 
 PACKAGES	=	cmake	\
 			emacs	\
@@ -34,13 +36,14 @@ PACKAGES	=	cmake	\
 			hyprpaper	\
 
 YAY_PACKAGES	=	opera	\
+			swww	\
 			ttf-font-logos	\
 			sddm-sugar-dark	\
 
 all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _my_dwall _sddm
 
 _zsh:
-	$(STOW) --target=$(TARGET) --restow zsh
+	$(STOW) --target=$(HOME) --restow zsh
 
 _zsh_plugins:
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -48,31 +51,31 @@ _zsh_plugins:
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 _emacs:
-	$(STOW) --target=$(TARGET) --restow emacs
+	$(STOW) --target=$(HOME) --restow emacs
 
 _swaylock:
-	$(STOW) --target=$(TARGET) --restow swaylock
+	$(STOW) --target=$(DOT_CONF) --restow swaylock
 
 _wofi:
-	$(STOW) --target=$(TARGET) --restow wofi
+	$(STOW) --target=$(DOT_CONF) --restow wofi
 
 _hyprland:
-	$(STOW) --target=$(TARGET) --restow hyprland
+	$(STOW) --target=$(DOT_CONF) --restow hyprland
 
 _scripts:
-	$(STOW) --target=$(TARGET) --restow scripts
+	$(STOW) --target=$(HOME) --restow scripts
 
 _waybar:
-	$(STOW) --target=$(TARGET) --restow waybar
+	$(STOW) --target=$(DOT_CONF) --restow waybar
 
 _wpaperd:
-	$(STOW) --target=$(TARGET) --restow wp_manager
+	$(STOW) --target=$(DOT_CONF) --restow wp_manager
 
 _kitty:
-	$(STOW) --target=$(TARGET) --restow kitty
+	$(STOW) --target=$(DOT_CONF) --restow kitty
 
 _my_dwall:
-	$(STOW) --target=$(TARGET) --restow my_dwall
+	$(STOW) --target=$(DOT_CONF) --restow my_dwall
 
 _sddm:
 	sudo cp sddm/sddm.conf /etc/
@@ -80,7 +83,7 @@ _sddm:
 	sudo cp sddm/Background.png /usr/share/sddm/themes/sugar-dark/
 	sudo cp sddm/Xsetup /usr/share/sddm/scripts/Xsetup
 
-wallpapers_install:
+wpaperd_install:
 	git clone https://github.com/danyspin97/wpaperd
 	cd ./wpaperd ; cargo build --release ; cargo install --path="./daemon" && cargo install --path="./cli"
 

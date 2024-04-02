@@ -23,22 +23,12 @@ update_wallpaper() {
     fi
 
     local current_hour=$(date +%H)
-    local prev_hour=$(( (current_hour + 23) % 24 ))
-    local next_hour=$(( (current_hour + 1) % 24 ))
 
-    if [ "${prev_hour:0:1}" == "0" ]; then
-        prev_hour="${prev_hour:1}"
-    fi
-    if [ "${next_hour:0:1}" == "0" ]; then
-        next_hour="${next_hour:1}"
-    fi
     if [ "${current_hour:0:1}" == "0" ]; then
         current_hour="${current_hour:1}"
     fi
 
-    hyprctl hyprpaper unload "$config/$prev_hour.jpg"
-    hyprctl hyprpaper preload "$config/$next_hour.jpg"
-    hyprctl hyprpaper wallpaper ",$config/$current_hour.jpg"
+    swww img "$config/$current_hour.jpg"
 }
 
 setup_wallpaper() {
@@ -62,6 +52,5 @@ setup_wallpaper() {
         current_hour="${current_hour:1}"
     fi
 
-    hyprctl hyprpaper preload "$config/$current_hour.jpg"
-    hyprctl hyprpaper wallpaper ",$config/$current_hour.jpg"
+    swww img "$config/$current_hour.jpg"
 }
