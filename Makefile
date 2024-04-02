@@ -2,7 +2,7 @@
 ## Just a Makefile to reconfigure everything easily
 ##
 
-STOW	?=	stow
+STOW	?=	stow --dotfiles
 
 TARGET	?=	$$HOME
 
@@ -31,13 +31,13 @@ PACKAGES	=	cmake	\
 			slurp	\
 			xdg-user-dirs	\
 			brightnessctl	\
+			hyprpaper	\
 
 YAY_PACKAGES	=	opera	\
-			deezer	\
 			ttf-font-logos	\
 			sddm-sugar-dark	\
 
-all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _sddm
+all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _my_dwall _sddm
 
 _zsh:
 	$(STOW) --target=$(TARGET) --restow zsh
@@ -70,6 +70,9 @@ _wpaperd:
 
 _kitty:
 	$(STOW) --target=$(TARGET) --restow kitty
+
+_my_dwall:
+	$(STOW) --target=$(TARGET) --restow my_dwall
 
 _sddm:
 	sudo cp sddm/sddm.conf /etc/
