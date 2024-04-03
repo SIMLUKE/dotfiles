@@ -9,6 +9,8 @@ export PATH=$PATH:"$HOME/my_scripts/"
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 # export TERM=xterm-24bits
 
+QT_QPA_PLATFORM=xcb
+
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin

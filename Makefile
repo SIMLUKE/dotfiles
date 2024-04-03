@@ -36,11 +36,13 @@ PACKAGES	=	cmake	\
 			hyprpaper	\
 
 YAY_PACKAGES	=	opera	\
+			spicetify-cli	\
+			spotify	\
 			swww	\
 			ttf-font-logos	\
 			sddm-sugar-dark	\
 
-all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _my_dwall _sddm
+all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _my_dwall _spicetify _sddm
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -76,6 +78,9 @@ _kitty:
 
 _my_dwall:
 	$(STOW) --target=$(DOT_CONF) --restow my_dwall
+
+_spicetify:
+	$(STOW) --target=$(DOT_CONF) --restow spicetify
 
 _sddm:
 	sudo cp sddm/sddm.conf /etc/

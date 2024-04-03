@@ -2,12 +2,17 @@
 
 source ~/.config/my_dwall/dwall_func.sh
 
-setup_wallpaper
+current_hour=$(date +%H)
 
-# Main loop
+update_wallpaper
+
 while true; do
-    if hour_changed; then
+    hour=$(date +%H)
+
+    if [ "$hour" != "$current_hour" ]; then
         update_wallpaper
+        current_hour=$hour
     fi
+
     sleep 60
 done
