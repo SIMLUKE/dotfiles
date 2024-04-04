@@ -1,7 +1,3 @@
-##
-## Just a Makefile to reconfigure everything easily
-##
-
 STOW	?=	stow --dotfiles
 
 HOME	?=	$$HOME
@@ -25,6 +21,7 @@ PACKAGES	=	cmake	\
 			pulseaudio	\
 			pulseaudio-bluetooth	\
 			blueman	\
+			bluez	\
 			pavucontrol	\
 			inotify-tools	\
 			swappy	\
