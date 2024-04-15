@@ -1,0 +1,23 @@
+width=75
+height=200
+x=10
+y=10
+location=top_left
+show=Power menu
+filter_rate=100
+allow_markup=true
+no_actions=true
+
+style=~/.config/wofi/power_wofi/style.css
+
+halign=start
+content_halign=fill
+
+orientation=vertical
+insensitive=true
+allow_images=true
+image_size=35
+gtk_dark=true
+hide_search=true
+hide_scroll=true
+key_exit=Escape

@@ -31,6 +31,7 @@ PACKAGES	=	cmake	\
 			xdg-user-dirs	\
 			brightnessctl	\
 			hyprpaper	\
+			hypridle	\
 
 YAY_PACKAGES	=	opera	\
 			spicetify-cli	\

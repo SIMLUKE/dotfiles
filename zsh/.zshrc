@@ -96,10 +96,11 @@ get_core() {
 cd() {builtin cd "$@" &&
           ls .
 }
-alias cp='cp -r'
-alias cat='bat'
 
-# faliases
+alias cp='cp -r'
+#alias cat='bat'
+
+# Faliases
 alias fman='compgen -c | fzf | xargs man'
 alias fhistory='history | cut -c 8- | fzf'
 
