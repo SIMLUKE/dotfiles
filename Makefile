@@ -18,8 +18,10 @@ PACKAGES	=	cmake	\
 			libxkbcommon	\
 			neofetch	\
 			nerd-fonts	\
-			pulseaudio	\
-			pulseaudio-bluetooth	\
+			pipewire	\
+			pipewire-audio	\
+			pipewire-jack	\
+			pipewire-pulse	\
 			blueman	\
 			bluez	\
 			pavucontrol	\
@@ -32,6 +34,7 @@ PACKAGES	=	cmake	\
 			brightnessctl	\
 			hyprpaper	\
 			hypridle	\
+			mako	\
 
 YAY_PACKAGES	=	opera	\
 			spicetify-cli	\
@@ -40,7 +43,7 @@ YAY_PACKAGES	=	opera	\
 			ttf-font-logos	\
 			sddm-sugar-dark	\
 
-all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _my_dwall _spicetify _sddm
+all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _my_dwall _spicetify _mako _sddm
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -79,6 +82,12 @@ _my_dwall:
 
 _spicetify:
 	$(STOW) --target=$(DOT_CONF) --restow spicetify
+
+_wofi:
+	$(STOW) --target=$(DOT_CONF) --restow wofi
+
+_mako:
+	$(STOW) --target=$(DOT_CONF) --restow mako
 
 _sddm:
 	sudo cp sddm/sddm.conf /etc/
