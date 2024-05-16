@@ -11,7 +11,6 @@ PACKAGES	=	cmake	\
 			stow	\
 			man-db	\
 			fzf	\
-			cron	\
 			meson	\
 			cargo	\
 			scdoc	\

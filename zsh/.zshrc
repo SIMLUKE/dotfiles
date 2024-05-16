@@ -23,9 +23,9 @@ export PATH="$PATH:/home/lukeskieur/.local/bin"
 
 if [[ -n "$INSIDE_EMACS" ]]; then
     export ZSH_THEME="kphoen"
-    if [[ $(pwd) = *'src'* || $(pwd) = *'include'* || $(pwd) = *'libs'* ]]; then
+    while [[ $(pwd) = *'src'* || $(pwd) = *'include'* || $(pwd) = *'libs'* ]]; do
         cd ../
-    fi
+    done
 else
     export ZSH_THEME="kphoen"
 fi
@@ -99,11 +99,15 @@ cd() {builtin cd "$@" &&
 
 alias cp='cp -r'
 #alias cat='bat'
+alias sl='ls'
 
 # Faliases
 alias fman='compgen -c | fzf | xargs man'
 alias fhistory='history | cut -c 8- | fzf'
 
 # Aliases
-alias db='gdb --args'
-alias dot="cd ~/dotfiles"
+alias gdb='gdb --args'
+alias dot='cd ~/dotfiles'
+alias mkdb='make debug -s'
+alias mkBIGdb='make debug_w_libs debug -s'
+alias cacabomb='value=0; while [[ $value != "10" ]]; do cacademo &; value=$((value+1)); done'
