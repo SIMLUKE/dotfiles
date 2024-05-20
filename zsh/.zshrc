@@ -106,7 +106,7 @@ alias fman='compgen -c | fzf | xargs man'
 alias fhistory='history | cut -c 8- | fzf'
 
 # Aliases
-alias gdb='gdb --args'
+alias gdba='gdb --args'
 alias dot='cd ~/dotfiles'
 alias mkdb='make debug -s'
 alias mkBIGdb='make debug_w_libs debug -s'
