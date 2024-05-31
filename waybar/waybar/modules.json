@@ -30,12 +30,13 @@
         "on-click": "activate",
         "active-only": false,
         "all-outputs": true,
-        "format": "{}",
+        "show-special": true,
         "persistent_workspaces": {
             "1": [],
             "2": [],
             "3": [],
-            "4": []
+            "4": [],
+            "5": []
         }
     },
     "custom/logo": {

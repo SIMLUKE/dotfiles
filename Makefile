@@ -33,16 +33,18 @@ PACKAGES	=	cmake	\
 			brightnessctl	\
 			hyprpaper	\
 			hypridle	\
+			waybar	\
 			mako	\
 
 YAY_PACKAGES	=	opera	\
+			swaylock-effects	\
 			spicetify-cli	\
 			spotify	\
 			swww	\
 			ttf-font-logos	\
 			sddm-sugar-dark	\
 
-all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _wpaperd _kitty _my_dwall _spicetify _mako _sddm
+all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _sddm
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -80,10 +82,7 @@ _my_dwall:
 	$(STOW) --target=$(DOT_CONF) --restow my_dwall
 
 _spicetify:
-	$(STOW) --target=$(DOT_CONF) --restow spicetify
-
-_wofi:
-	$(STOW) --target=$(DOT_CONF) --restow wofi
+	echo "pls fix spotify"
 
 _mako:
 	$(STOW) --target=$(DOT_CONF) --restow mako
