@@ -15,7 +15,7 @@ case "$(printf "$logout\n$shutdown\n$reboot\n$sleep" | wofi -d -i -s ~/.config/w
 	*"$sleep_res"*) swaylock -f && systemctl suspend ;;
 	*"$reboot_res"*) reboot ;;
 	*"$shutdown_res"*) poweroff ;;
-
+	*"pipipopo"*) kitty -e yes pipipopo ;;
 	*) exit 1 ;;
 esac
 

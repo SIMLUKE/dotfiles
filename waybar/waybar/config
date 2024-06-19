@@ -22,7 +22,7 @@
         "pulseaudio",
         "network",
         "group/hardware",
-        "battery",
+        "custom/battery",
         "clock"
     ]
 }

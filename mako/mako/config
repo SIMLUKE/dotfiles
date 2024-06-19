@@ -3,8 +3,9 @@ border-color=#CEB0EBCC
 background-color=#2F3541CC
 sort=-time
 layer=overlay
-border-radius=11
+border-radius=3
 margin=13
+font=Source Code Pro 12
 
 [urgency=low]
 default-timeout=5000

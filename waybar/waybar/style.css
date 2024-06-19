@@ -10,13 +10,29 @@ window#waybar {
     background: rgba(60, 59, 61, 0.7)
 }
 
-#battery.critical:not(.charging) {
+#custom-battery.critical:not(.charging) {
     color: #f53c3c;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#custom-battery.critical:not(.charging) {
+    color: #e68a00;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-battery.full {
+    color: #1aff1a;
+}
+
+#custom-battery.charging {
 }
 
 #workspaces {
@@ -45,12 +61,6 @@ window#waybar {
     opacity:1.0;
 }
 
-#idle_inhibitor {
-}
-
 #idle_inhibitor.activated {
     color: #525452;
-}
-
-#waybar-idle_inhibitor.deactivated {
 }

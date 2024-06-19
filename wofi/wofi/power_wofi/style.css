@@ -12,7 +12,6 @@
 }
 
 #outer-box {
-    margin: 5px;
     border: none;
     background-color: transparent;
 }
@@ -40,4 +39,8 @@
     background-color: #696969;
     border-radius: 5px;
     border: none;
+}
+
+#scroll {
+    margin: -20px 0px;
 }

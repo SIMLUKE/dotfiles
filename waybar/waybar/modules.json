@@ -10,6 +10,11 @@
         "format-icons": ["", "", "", "", ""],
         "max-length": 30
     },
+    "custom/battery": {
+        "exec": "~/my_scripts/battery.sh",
+        "format": {},
+        "return-type": "json"
+    },
     "clock": {
         "format-alt": "{:%a, %d. %b  %H:%M}"
     },
@@ -24,7 +29,7 @@
         "tooltip-format-ethernet": "{ifname}  ",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "nm-connection-editor"
+        "on-click": "nm-applet"
     },
     "hyprland/workspaces" : {
         "on-click": "activate",
