@@ -15,6 +15,7 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:"$HOME/.cargo/bin/"
 export PATH="$PATH:/home/lukeskieur/.local/bin"
+export PATH="$PATH:/home/lukeskieur/Documents/poc/BruteForce/"
 
 # Cool themes
 #ZSH_THEME="robbyrussell"
@@ -55,9 +56,11 @@ fi
 ENABLE_CORRECTION="true"
 
 # Plugins
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-plugins=(git zsh-autosuggestions)
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -111,3 +114,7 @@ alias dot='cd ~/dotfiles'
 alias mkdb='make debug -s'
 alias mkBIGdb='make debug_w_libs debug -s'
 alias cacabomb='v=0;while [[ $v != "10" ]];do cacademo &;v=$((value+1));done'
+
+# docker pull ghcr.io/gitleaks/gitleaks:latest
+
+source ~/Documents/poc/BruteForce/autocompletion/zsh/_bruteforce
