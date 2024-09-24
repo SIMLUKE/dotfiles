@@ -18,7 +18,7 @@
 
     "modules-right": [
         "idle_inhibitor",
-        "bluetooth",
+        "custom/bluetooth",
         "pulseaudio",
         "network",
         "group/hardware",

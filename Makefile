@@ -44,7 +44,7 @@ YAY_PACKAGES	=	opera	\
 			ttf-font-logos	\
 			sddm-sugar-dark	\
 
-all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako
+all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -77,6 +77,9 @@ _wpaperd:
 
 _kitty:
 	$(STOW) --target=$(DOT_CONF) --restow kitty
+
+_nyxt:
+	$(STOW) --target=$(DOT_CONF) --restow nyxt
 
 _my_dwall:
 	$(STOW) --target=$(DOT_CONF) --restow my_dwall

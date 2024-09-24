@@ -114,6 +114,14 @@ alias dot='cd ~/dotfiles'
 alias mkdb='make debug -s'
 alias mkBIGdb='make debug_w_libs debug -s'
 alias cacabomb='v=0;while [[ $v != "10" ]];do cacademo &;v=$((value+1));done'
+alias rotate_normal='wlr-randr --output eDP-1 --transform normal'
+alias rotate_up='wlr-randr --output eDP-1 --transform 180'
+alias remove_package='pacman -Qe | fzf -m | cut -d " " -f 1 | xargs sudo pacman -Rns --noconfirm'
+wipe_docker() {
+    docker-compose down
+    docker rm -f $(docker ps -a -q)
+    docker volume rm $(docker volume ls -q)
+}
 
 # docker pull ghcr.io/gitleaks/gitleaks:latest
 

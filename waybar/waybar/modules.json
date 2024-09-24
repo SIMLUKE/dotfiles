@@ -11,7 +11,7 @@
         "max-length": 30
     },
     "custom/battery": {
-        "exec": "~/my_scripts/battery.sh",
+        "exec": "~/.config/waybar/scripts/battery.sh",
         "format": {},
         "return-type": "json"
     },
@@ -29,7 +29,7 @@
         "tooltip-format-ethernet": "{ifname}  ",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "nm-applet"
+        "on-click": "~/my_scripts/wifi_wofi.sh"
     },
     "hyprland/workspaces" : {
         "on-click": "activate",
@@ -49,8 +49,8 @@
         "on-click": "~/my_scripts/logout.sh"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} ",
-        "format-bluetooth": "{volume}% {icon}  ",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} ",
         "format-muted": "",
         "format-icons": {
             "headphones": "",
@@ -61,7 +61,13 @@
             "default": ["", ""]
         },
         "scroll-step": 1,
-        "on-click": "pavucontrol"
+        "on-click": "GDK_DISABLE=vulkan pavucontrol"
+    },
+    "custom/bluetooth": {
+        "exec": "~/.config/waybar/scripts/bluetooth.sh",
+        "format": {},
+        "return-type": "json",
+        "on-click": "~/my_scripts/blue_wofi.sh"
     },
     "mpris": {
         "format": "{player_icon} {title} - {artist}",
@@ -109,19 +115,11 @@
             "transition-left-to-right": false
         },
         "modules": [
-            "disk",
             "cpu",
+            "disk",
             "temperature",
             "memory"
         ]
-    },
-    "bluetooth": {
-        "format": "{status} ",
-        "format-disabled": "",
-        "format-off": "",
-        "interval": 30,
-        "on-click": "blueman-manager",
-        "format-no-controller": ""
     },
     "idle_inhibitor": {
         "format": "{icon}",

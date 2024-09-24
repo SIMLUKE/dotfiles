@@ -1,98 +1,361 @@
 #!/usr/bin/env bash
 
-# Starts a scan of available broadcasting SSIDs
-# nmcli dev wifi rescan
+# Copyright © 2024 Jesús Arenas
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# This program is free software: you can redistribute it and/or modify it under the terms
+# of the GNU General Public License as published by the Free Software Foundation, either
+# version 3 of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with this program.
+# If not, see <https://www.gnu.org/licenses/>.
 
-FIELDS=SSID,SECURITY
-POSITION=0
-YOFF=0
-XOFF=0
+usage () {
+	echo -en "\
+Usage: $(basename $0) [OPTIONS...]
 
-if [ -r "$DIR/config" ]; then
-	source "$DIR/config"
-elif [ -r "$HOME/.config/wofi/wifi" ]; then
-	source "$HOME/.config/wofi/wifi/config"
-else
-	echo "WARNING: config file not found! Using default values."
-fi
+Displays a menu with a launcher to select a Wi-Fi network.
 
-LIST=$(nmcli --fields "$FIELDS" device wifi list | sed '/^--/d')
-# For some reason wofi always approximates character width 2 short... hmmm
-RWIDTH=$(($(echo "$LIST" | head -n 1 | awk '{print length($0); }')*10))
-# Dynamically change the height of the wofi menu
-LINENUM=$(echo "$LIST" | wc -l)
-# Gives a list of known connections so we can parse it later
-KNOWNCON=$(nmcli connection show)
-# Really janky way of telling if there is currently a connection
-CONSTATE=$(nmcli -fields WIFI g)
+Options:
+  -s, --submenu               Show Wi-Fi options in a submenu.
 
-CURRSSID=$(LANGUAGE=C nmcli -t -f active,ssid dev wifi | awk -F: '$1 ~ /^yes/ {print $2}')
+  -i INTERFACE
+  --interface INTERFACE       Start using Wi-Fi interface INTERFACE.
 
-if [[ ! -z $CURRSSID ]]; then
-	HIGHLINE=$(echo  "$(echo "$LIST" | awk -F "[  ]{2,}" '{print $1}' | grep -Fxn -m 1 "$CURRSSID" | awk -F ":" '{print $1}') + 1" | bc )
-fi
+  --wofi                      Use wofi launcher (default).
+  --rofi                      Use rofi launcher.
+  --wmenu                     Use wmenu launcher.
+  --dmenu                     Use dmenu launcher.
+  --bemenu                    Use bemenu launcher.
 
-# HOPEFULLY you won't need this as often as I do
-# If there are more than 8 SSIDs, the menu will still only have 8 lines
-if [ "$LINENUM" -gt 8 ] && [[ "$CONSTATE" =~ "enabled" ]]; then
-	LINENUM=8
-elif [[ "$CONSTATE" =~ "disabled" ]]; then
-	LINENUM=1
-fi
+  -h, --help                  Print this help and exit.
+  -v, --version               Print version and exit.
 
+Nerd Fonts icons are used. A font can be downloaded at:
+https://www.nerdfonts.com/
 
-if [[ "$CONSTATE" =~ "enabled" ]]; then
-	TOGGLE="toggle off"
-elif [[ "$CONSTATE" =~ "disabled" ]]; then
-	TOGGLE="toggle on"
-fi
+Dependencies:
+  - NetworkManager.
+  - At least one launcher of: wofi, rofi, wmenu, dmenu, bemenu.
 
+About dmenu:
+  Hide password button does not work, since dmenu does not support this.
 
-CHENTRY=$(echo -e "$TOGGLE\nmanual\n$LIST" | uniq -u | wofi -i -d --prompt "Wi-Fi SSID: " --lines "$LINENUM" --location "$POSITION" --yoffset "$YOFF" --xoffset "$XOFF" --width $RWIDTH)
-#echo "$CHENTRY"
-CHSSID=$(echo "$CHENTRY" | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $1}')
-#echo "$CHSSID"
+Exit status:
+  Returns 1 if a bad option is given.
+  Returns 2 if no Wi-Fi interface is detected with nmcli.
+  Returns 0 otherwise.
 
-# If the user inputs "manual" as their SSID in the start window, it will bring them to this screen
-if [ "$CHENTRY" = "manual" ] ; then
-	# Manual entry of the SSID and password (if appplicable)
-	MSSID=$(echo "enter the SSID of the network (SSID,password)" | wofi -d "Manual Entry: " --lines 1)
-	# Separating the password from the entered string
-	MPASS=$(echo "$MSSID" | awk -F "," '{print $2}')
+This program is licensed under GPL-3.0-or-later.
+"
+	exit
+}
 
-	#echo "$MSSID"
-	#echo "$MPASS"
+about () {
+	echo -en "\
+wifimenu 2.1
+Copyright © 2024 Jesús Arenas
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+"
+	exit
+}
 
-	# If the user entered a manual password, then use the password nmcli command
-	if [ "$MPASS" = "" ]; then
-		nmcli dev wifi con "$MSSID"
-	else
-		nmcli dev wifi con "$MSSID" password "$MPASS"
-	fi
+display-menu () {
+	# You can edit launcher options or add more launchers
+	form=$1
+	prompt="$2"
 
-elif [ "$CHENTRY" = "toggle on" ]; then
-	nmcli radio wifi on
+	case $launcher in
+		"wofi")
+			case $form in
+				1) wofi --dmenu --insensitive --prompt "$prompt" ;;
+				2) wofi --dmenu --prompt "$prompt" ;;
+				3) wofi --dmenu --password --prompt "$prompt" ;;
+			esac
+			;;
+		"rofi")
+			case $form in
+				1) rofi -dmenu -i -p "$prompt" ;;
+				2) rofi -dmenu -p "$prompt" ;;
+				3) rofi -dmenu -password -p "$prompt" ;;
+			esac
+			;;
+		"wmenu")
+			case $form in
+				1) wmenu -l 10 -i -p "$prompt" ;;
+				2) wmenu -l 10 -p "$prompt" ;;
+				3) wmenu -l 10 -P -p "$prompt" ;;
+			esac
+			;;
+		"dmenu")
+			case $form in
+				1) dmenu -l 10 -i -p "$prompt" ;;
+				2) dmenu -l 10 -p "$prompt" ;;
+				3) dmenu -l 10 -p "$prompt" ;; # Cannot hide the password
+			esac
+			;;
+		"bemenu")
+			case $form in
+				1) bemenu --list 10 --ignorecase --prompt "$prompt" ;;
+				2) bemenu --list 10 --prompt "$prompt" ;;
+				3) bemenu --list 10 --password "indicator" --prompt "$prompt" ;;
+			esac
+			;;
+		*)
+			echo "$(basename $0): Bad launcher. See variable 'launcher'." >&2
+			exit 1
+			;;
+	esac
+}
 
-elif [ "$CHENTRY" = "toggle off" ]; then
-	nmcli radio wifi off
-
-else
-
-	# If the connection is already in use, then this will still be able to get the SSID
-	if [ "$CHSSID" = "*" ]; then
-		CHSSID=$(echo "$CHENTRY" | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $3}')
-	fi
-
-	# Parses the list of preconfigured connections to see if it already contains the chosen SSID. This speeds up the connection process
-	if [[ $(echo "$KNOWNCON" | grep "$CHSSID") = "$CHSSID" ]]; then
-		nmcli con up "$CHSSID"
-	else
-		if [[ "$CHENTRY" =~ "WPA2" ]] || [[ "$CHENTRY" =~ "WEP" ]]; then
-			WIFIPASS=$(echo "if connection is stored, hit enter" | wofi -P -d --prompt "password" --lines 1 --location "$POSITION" --yoffset "$YOFF" --xoffset "$XOFF" --width $RWIDTH)
+ask-password () {
+	middle_option=${1:-}
+	wifi_password="󰛐"
+	until [[ -z "$wifi_password" || "$wifi_password" =~ ^[^󰛑󰛐] ]]; do
+		if [[ "$wifi_password" =~ ^󰛑 ]]; then
+			wifi_password=$(echo -e "󰛐${middle_option}\n" | display-menu 3 "$tr_ask_password_prompt")
+		else
+			wifi_password=$(echo -e "󰛑${middle_option}\n" | display-menu 2 "$tr_ask_password_prompt")
 		fi
-		nmcli dev wifi con "$CHSSID" password "$WIFIPASS"
+	done
+	echo "$wifi_password"
+}
+
+select-interface () {
+	chosen=$( (for (( i = 0; i < ${#interfaces[@]}; i++ )); do echo "󰾲  ${interfaces[$i]}" ; done; echo "") | display-menu 1 "$tr_select_interface_prompt")
+
+	if [ -z "$chosen" ]; then
+		exit
+	elif [[ "$chosen" =~ ^ ]]; then
+		return
+	else
+		interface_to_use="${chosen:3}"
+	fi
+}
+
+connect-hidden () {
+	wifi_name=$(echo ""| display-menu 2 "$tr_connect_hidden_prompt")
+
+	if [ -z "$wifi_name" ]; then
+		exit
+	elif [[ "$wifi_name" =~ ^ ]]; then
+		return
 	fi
 
+	wifi_password=$(ask-password "\n")
+
+	if [ -z "$wifi_password" ]; then
+		exit
+	elif [[ "$wifi_password" =~ ^ ]]; then
+		wifi_password=""
+	elif [[ "$wifi_password" =~ ^ ]]; then
+		return
+	fi
+
+	nmcli device wifi connect "$wifi_name" hidden yes password "$wifi_password"
+}
+
+forget-connection () {
+
+	mapfile -t connections_list < <( echo "$(nmcli --colors no --get-values TYPE,NAME connection show)" | awk -F ':' '$1 == "802-11-wireless" {print $2}' )
+
+	for (( i = 0; i < ${#connections_list[@]}; i++ )); do
+		id_interface=$(nmcli --colors no --get-values connection.interface-name connection show "${connections_list[$i]}")
+		if [ "$id_interface" != "$interface_to_use" ]; then
+			connections_list[$i]="${connections_list[$i]} ($id_interface)\0${connections_list[$i]}"
+		else
+			connections_list[$i]="${connections_list[$i]}\0${connections_list[$i]}"
+		fi
+		connections_list[$i]="󰑩  ${connections_list[$i]}"
+	done
+
+	chosen=$( (for (( i = 0; i < ${#connections_list[@]}; i++ )); do echo -e "${connections_list[$i]}" ; done; echo "") | cut --delimiter=$'\0' --fields=1 | display-menu 1 "$tr_forget_connection_prompt")
+
+	if [ -z "$chosen" ]; then
+		exit
+	elif [[ "$chosen" =~ ^ ]]; then
+		return
+	fi
+
+	sure=$(echo -e "\n" | display-menu 1 "$tr_forget_connection_sure_prompt_1 ${chosen:3}$tr_forget_connection_sure_prompt_2")
+
+	if [ -z "$sure" ]; then
+		exit
+	elif [[ "$sure" =~ ^ ]]; then
+		for (( i = 0; i < ${#connections_list[@]}; i++ )); do
+			if [ "$chosen" = "$(echo -e "${connections_list[$i]}" | cut --delimiter=$'\0' --fields=1)" ]; then
+				nmcli connection delete id "$(echo -e "${connections_list[$i]}" | cut --delimiter=$'\0' --fields=2)"
+				break
+			fi
+		done
+	fi
+}
+
+connect-wifi () {
+	wifi_security=${1:0:1}
+	wifi_ssid=${1:3}
+
+	mapfile -t connections_matching < <( echo "$(nmcli --colors no --get-values NAME connection show)" | grep --color=never --word-regexp "$wifi_ssid" )
+
+	for (( i = 0; i < ${#connections_matching[@]}; i++ )); do
+		if [ $(nmcli --colors no --get-values connection.interface-name connection show "${connections_matching[$i]}") = "$interface_to_use" ]; then
+			if [[ "$wifi_security" =~ ^ ]]; then
+				nmcli connection down id "${connections_matching[$i]}"
+			else
+				nmcli connection up id "${connections_matching[$i]}" ifname "$interface_to_use"
+			fi
+			exit
+		fi
+	done
+
+	if [[ "$wifi_security" =~ ^[󰤪󰤤󰤡] ]]; then
+		wifi_password=$(ask-password)
+		if [ -z "$wifi_password" ]; then
+			exit
+		elif [[ "$wifi_password" =~ ^ ]]; then
+			return
+		fi
+	fi
+	nmcli device wifi connect "$wifi_ssid" ifname "$interface_to_use" password "$wifi_password"
+
+	exit
+}
+
+get-main-options () {
+	connection_state=$(nmcli --colors no --get-values WIFI general)
+	[ ${#interfaces[@]} -gt 1 ] && interface_message="󰾲  $tr_interface_message $interface_to_use\n"
+
+	if [ "$connection_state" = "disabled" ]; then
+		echo -e "$enable_message\n$forget_message"
+	elif [ "$connection_state" = "enabled" ]; then
+
+		if [ -n "$scan" ]; then
+			if [ -n "$submenu" ]; then
+				echo "$submenu_message"
+			else
+				echo -e "$disable_message\n${interface_message:-}$hidden_message\n$forget_message"
+			fi
+		else
+			echo -e "$submenu_close_message\n$disable_message\n${interface_message:-}$hidden_message\n$forget_message"
+		fi
+
+	fi
+}
+
+############################################################ MAIN ############################################################
+
+# For translation or customization (for editing). You can edit the help message in usage function too
+tr_scanning_networks="Scanning networks"
+tr_scanning_networks_complete="Scanning completed"
+tr_submenu_message="More options"
+tr_submenu_close_message="Close options"
+tr_disable_message="Disable Wi-Fi"
+tr_enable_message="Enable Wi-Fi"
+tr_hidden_message="Connect to a hidden network"
+tr_forget_message="Forget connection"
+tr_interface_message="Interface:"
+tr_main_menu_prompt="Wi-Fi SSID:"
+tr_select_interface_prompt="Interface to use:"
+tr_connect_hidden_prompt="Network name:"
+tr_ask_password_prompt="Password:"
+tr_forget_connection_prompt="Connection to forget:"
+tr_forget_connection_sure_prompt_1="Forget"
+tr_forget_connection_sure_prompt_2="?"
+
+# Not to edit (unless you want to change Nerd Font characters, but then change all equal characters in the script)
+submenu_message="  $tr_submenu_message"
+submenu_close_message="  $tr_submenu_close_message"
+disable_message="󰖪  $tr_disable_message"
+enable_message="󰖩  $tr_enable_message"
+hidden_message="󰛐  $tr_hidden_message"
+forget_message="  $tr_forget_message"
+
+# Detecting Wi-Fi interfaces and add them to the array
+mapfile -t interfaces < <(nmcli --colors no --get-values TYPE,DEVICE device status | awk -F ':' '$1 == "wifi" {print $2}')
+if [ -z "${interfaces[0]}" ]; then
+	echo "$(basename $0): No Wi-Fi interfaces detected." >&2
+	exit 2
 fi
+
+# Default launcher (for editing)
+launcher="wofi"
+# Default menu display. Set variable to anything for submenu options (for editing)
+submenu=
+# Default interface (edit on your risk, if you know your hardware, or use --interface option instead)
+interface_to_use="${interfaces[0]}"
+# Shows wifi_list. If unset, shows submenu options (you can unset it if you want, but only make more sense to unset when using submenu)
+scan=1
+
+# Options
+while [ -n "$1" ]; do
+	case "$1" in
+		"-h" | "--help") usage ;;
+		"-v" | "--version") about ;;
+		"-s" | "--submenu") submenu=1 ;;
+		"-i" | "--interface")
+			if [ ! $(nmcli --colors no --get-values TYPE,DEVICE device status | awk -F ':' '$1 == "wifi" {print $2}' | grep --word-regexp "$2") ]; then
+				echo "$(basename $0): Bad interface given: $2" >&2
+				exit 2
+			fi
+			interface_to_use="$2"
+			shift
+			;;
+		"--wofi") launcher="wofi" ;;
+		"--rofi") launcher="rofi" ;;
+		"--wmenu") launcher="wmenu" ;;
+		"--dmenu") launcher="dmenu" ;;
+		"--bemenu") launcher="bemenu" ;;
+		*) echo "$(basename $0): Bad option given. See usage with -h or --help." >&2 ; exit 1 ;;
+	esac
+	shift
+done
+
+# Main cicle
+while true; do
+
+	if [ -n "$scan" ]; then
+
+		echo "$tr_scanning_networks"
+		wifi_list=$(nmcli --colors no --get-values SECURITY,SIGNAL,SSID,IN-USE device wifi list --rescan auto ifname $interface_to_use | awk -F ':' '
+		$3 {
+		if ($1 ~ /^WPA/)
+			if ($2 > 80)
+				sub($1, "󰤪")
+			else if ($2 > 60)
+				sub($1, "󰤤")
+			else
+				sub($1, "󰤡")
+		else if ($1 == "")
+			if ($2 > 80)
+				sub($1, "󰤨")
+			else if ($2 > 60)
+				sub($1, "󰤢")
+			else
+				sub($1, "󰤟")
+		if ($4 == "*")
+			sub($1, "")
+		print $1 "  " $3
+		}
+		')
+		echo "$tr_scanning_networks_complete"
+
+	fi
+
+	chosen=$(echo -e "$(get-main-options)${scan:+${wifi_list:+\n}$wifi_list}" | display-menu 1 "$tr_main_menu_prompt")
+
+	case "$chosen" in
+		'') exit ;;
+		""*) unset scan ;;
+		""*) scan=1 ;;
+		"󰖩"*) nmcli radio wifi on ; exit ;;
+		"󰖪"*) nmcli radio wifi off ; exit ;;
+		"󰾲"*) select-interface ;;
+		"󰛐"*) connect-hidden ;;
+		""*) forget-connection ;;
+		*) connect-wifi "$chosen" ;;
+	esac
+
+done
