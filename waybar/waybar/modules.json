@@ -1,4 +1,9 @@
 {
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", ""]
+    },
     "battery": {
         "interval": 60,
         "states": {
@@ -35,13 +40,15 @@
         "on-click": "activate",
         "active-only": false,
         "all-outputs": true,
-        "show-special": true,
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
+        "show-special": true
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "icon": true,
+        "icon-size": 20,
+        "rewrite": {
+            "* - Mozilla Firefox": "$1",
+            "(.*) - zsh": "> [$1]"
         }
     },
     "custom/logo": {
@@ -61,7 +68,7 @@
             "default": ["", ""]
         },
         "scroll-step": 1,
-        "on-click": "GDK_DISABLE=vulkan pavucontrol"
+        "on-click": "flatpak run com.saivert.pwvucontrol"
     },
     "custom/bluetooth": {
         "exec": "~/.config/waybar/scripts/bluetooth.sh",
@@ -90,15 +97,21 @@
         "on-click": "playerctl previous track"
     },
     "cpu": {
-        "format": "{usage}%  ",
+        "format": "{usage}% 󰻠",
         "on-click": "alacritty -e htop"
     },
-    "temperature": {
-        "format-critical": " | {temperatureC}°C  ",
-        "format": " | {temperatureC}°C "
+    "custom/temperature_gpu": {
+        "exec": "~/.config/waybar/scripts/temp_gpu.sh",
+        "format": {},
+        "return-type": "json"
+    },
+    "custom/temperature_cpu": {
+        "exec": "~/.config/waybar/scripts/temp_cpu.sh",
+        "format": {},
+        "return-type": "json"
     },
     "memory": {
-        "format": " | {}% 󰍛 |",
+        "format": "  {}%  ",
         "on-click": "alacritty -e htop"
     },
     "disk": {
@@ -116,8 +129,9 @@
         },
         "modules": [
             "cpu",
+            "custom/temperature_cpu",
+            "custom/temperature_gpu",
             "disk",
-            "temperature",
             "memory"
         ]
     },

@@ -72,7 +72,7 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
  else
    export EDITOR='emacs --with-profile tiny'
  fi
- export BROWSER=opera
+ export BROWSER=firefox
 
 # Gui use of emacs
 ne() {
@@ -119,10 +119,8 @@ alias rotate_up='wlr-randr --output eDP-1 --transform 180'
 alias remove_package='pacman -Qe | fzf -m | cut -d " " -f 1 | xargs sudo pacman -Rns --noconfirm'
 wipe_docker() {
     docker-compose down
-    docker rm -f $(docker ps -a -q)
-    docker volume rm $(docker volume ls -q)
+    docker system prune -a
 }
-
+alias cleanAtess='prettier --write . ; ruff check --fix ; ruff format'
 # docker pull ghcr.io/gitleaks/gitleaks:latest
-
-source ~/Documents/poc/BruteForce/autocompletion/zsh/_bruteforce
+source /home/lukeskieur/Documents/poc/BruteForce/autocompletion/zsh/_bruteforce

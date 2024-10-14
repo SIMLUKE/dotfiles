@@ -6,6 +6,7 @@ then
 fi
 
 fullscreen() {
+        sleep 0.5
 	filename=$HOME/Pictures/Screenshots/$(date +%Y%m%d_%H:%M:%S_Fullscreen).png
 	grim $filename
 	cat $filename | wl-copy \

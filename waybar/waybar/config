@@ -1,4 +1,6 @@
+[
 {
+    "position": "top",
     "layer": "top",
     "height": 35,
     "spacing": 12,
@@ -11,18 +13,39 @@
     ],
 
     "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "idle_inhibitor",
+        "network",
+        "group/hardware",
+        "custom/battery",
+    ]
+},
+
+{
+    "position": "bottom",
+    "layer": "top",
+    "height": 8,
+    "spacing": 12,
+
+    "include": ["~/.config/waybar/modules.json"],
+
+    "modules-left": [
+        "hyprland/window"
+    ],
+
+    "modules-center": [
         "custom/go-back",
         "mpris",
         "custom/skip"
     ],
 
     "modules-right": [
-        "idle_inhibitor",
         "custom/bluetooth",
         "pulseaudio",
-        "network",
-        "group/hardware",
-        "custom/battery",
-        "clock"
+        "backlight",
     ]
 }
+]
