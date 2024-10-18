@@ -44,7 +44,7 @@ YAY_PACKAGES	=	opera	\
 			ttf-font-logos	\
 			sddm-sugar-dark	\
 
-all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim
+all: _zsh _emacs _swaylock _wofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -92,6 +92,9 @@ _spicetify:
 
 _mako:
 	$(STOW) --target=$(DOT_CONF) --restow mako
+
+_colors:
+	$(STOW) --target=$(DOT_CONF) --restow colors
 
 _sddm:
 	sudo cp sddm/sddm.conf /etc/

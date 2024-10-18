@@ -1,67 +1,69 @@
+@import "../../.config/colors/MainColors.css";
+
 * {
-    border: none;
-    font-size: 16px;
-    min-height: 0;
-    margin-left: 3px;
-    margin-right: 3px;
-    color: white;
+  border: none;
+  font-size: 16px;
+  min-height: 0;
+  margin-left: 3px;
+  margin-right: 3px;
+  color: white;
 }
 
 window#waybar {
-    background: rgba(60, 59, 61, 0.7)
+  background: rgba(60, 59, 61, 0.7);
 }
 
 #custom-battery.critical:not(.charging) {
-    color: #f53c3c;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #custom-battery.critical:not(.charging) {
-    color: #e68a00;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: #e68a00;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #custom-battery.full {
-    color: #1aff1a;
+  color: #1aff1a;
 }
 
 #custom-battery.charging {
 }
 
 #workspaces {
-    font-style: normal;
-    opacity: 0.8;
-    font-size: 16px;
-    color: #d0cdd4;
+  font-style: normal;
+  opacity: 0.8;
+  font-size: 16px;
+  color: @WhiteColor;
 }
 
 #workspaces button {
-    padding: 0px 5px;
-    margin: 4px 3px;
-    border-bottom: 4px;
-    border-bottom-color: #c79bf2;
-    transition: all 0.3s ease-in-out;
-    opacity: 0.4;
+  padding: 0px 5px;
+  margin: 4px 3px;
+  border-bottom: 4px solid;
+  border-bottom-color: @ThirdColor;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.5;
 }
 
 #workspaces button.active {
-    color: #d0cdd4;
-    background: #8c7c9c;
-    min-width: 40px;
-    border-bottom: 4px;
-    border-bottom-color: #c79bf2;
-    transition: all 0.3s ease-in-out;
-    opacity:1.0;
+  color: @FirstColor;
+  background: @SecondColor;
+  min-width: 40px;
+  border-bottom: 4px;
+  border-bottom-color: @ThirdColor;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
 }
 
 #idle_inhibitor.activated {
-    color: #525452;
+  color: #525452;
 }

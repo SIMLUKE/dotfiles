@@ -6,7 +6,7 @@ general {
     gaps_in = 7
     gaps_out = 12
     border_size = 2
-    col.active_border = rgba(ceb0ebff)
-    col.inactive_border = rgba(7f609c3f)
+    col.active_border = $FirstColor
+    col.inactive_border = $BackgroundColor1
     layout = dwindle
 }

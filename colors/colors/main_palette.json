@@ -1,0 +1,25 @@
+{
+  "MainColors": [
+    {
+      "FirstColor": "#debcf9"
+    },
+    {
+      "SecondColor": "#dba8e4"
+    },
+    {
+      "ThirdColor": "#c1a3e1"
+    },
+    {
+      "FourthColor": "#c6b0fa"
+    },
+    {
+      "WhiteColor": "#cdbbdd"
+    },
+    {
+      "BackgroundColor1": "#292A30"
+    },
+    {
+      "BackgroundColor2": "#40414a"
+    }
+  ]
+}

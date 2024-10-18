@@ -1,146 +1,146 @@
 {
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{percent}% {icon}",
-        "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", ""]
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", ""]
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
-    "battery": {
-        "interval": 60,
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon} ",
-        "format-charging": "{capacity}%  ",
-        "format-icons": ["", "", "", "", ""],
-        "max-length": 30
-    },
-    "custom/battery": {
-        "exec": "~/.config/waybar/scripts/battery.sh",
-        "format": {},
-        "return-type": "json"
-    },
-    "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
-    },
-    "network": {
-        "interface": "wlan0",
-        "format": "{ifname}",
-        "format-wifi": "{essid} ({signalStrength}%)  ",
-        "format-ethernet": "{ifname}  ",
-        "format-disconnected": "No wifi",
-        "tooltip-format": "{ifname}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
-        "tooltip-format-ethernet": "{ifname}  ",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50,
-        "on-click": "~/my_scripts/wifi_wofi.sh"
-    },
-    "hyprland/workspaces" : {
-        "on-click": "activate",
-        "active-only": false,
-        "all-outputs": true,
-        "show-special": true
-    },
-    "hyprland/window": {
-        "format": "{}",
-        "icon": true,
-        "icon-size": 20,
-        "rewrite": {
-            "* - Mozilla Firefox": "$1",
-            "(.*) - zsh": "> [$1]"
-        }
-    },
-    "custom/logo": {
-        "format": "<span font='17' rise='-1000'>  </span>",
-        "on-click": "~/my_scripts/logout.sh"
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} ",
-        "format-muted": "",
-        "format-icons": {
-            "headphones": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "scroll-step": 1,
-        "on-click": "flatpak run com.saivert.pwvucontrol"
-    },
-    "custom/bluetooth": {
-        "exec": "~/.config/waybar/scripts/bluetooth.sh",
-        "format": {},
-        "return-type": "json",
-        "on-click": "~/my_scripts/blue_wofi.sh"
-    },
-    "mpris": {
-        "format": "{player_icon} {title} - {artist}",
-        "format-paused": "{status_icon} <i>{title} - {artist}</i>",
-        "player-icons": {
-            "default": "<span font='15' rise='-1000'>󰐊</span>",
-            "mpv": "<span font='15' rise='-1000'>🎵</span>"
-        },
-        "status-icons": {
-            "paused": "<span font='15' rise='-1000'>󰏤</span>"
-        },
-        "max-length": 50
-    },
-    "custom/skip": {
-        "format": "<span font='15' rise='-1000'>󰒭</span>",
-        "on-click": "playerctl next track"
-    },
-    "custom/go-back": {
-        "format": "<span font='15' rise='-1000'>󰒮</span>",
-        "on-click": "playerctl previous track"
-    },
-    "cpu": {
-        "format": "{usage}% 󰻠",
-        "on-click": "alacritty -e htop"
-    },
-    "custom/temperature_gpu": {
-        "exec": "~/.config/waybar/scripts/temp_gpu.sh",
-        "format": {},
-        "return-type": "json"
-    },
-    "custom/temperature_cpu": {
-        "exec": "~/.config/waybar/scripts/temp_cpu.sh",
-        "format": {},
-        "return-type": "json"
-    },
-    "memory": {
-        "format": "  {}%  ",
-        "on-click": "alacritty -e htop"
-    },
-    "disk": {
-        "interval": 30,
-        "format": "{percentage_used}% 󰨣",
-        "path": "/",
-        "on-click": "alacritty -e htop"
-    },
-    "group/hardware": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-memory",
-            "transition-left-to-right": false
-        },
-        "modules": [
-            "cpu",
-            "custom/temperature_cpu",
-            "custom/temperature_gpu",
-            "disk",
-            "memory"
-        ]
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "tooltip": true,
-        "format-icons":{
-            "activated": "󱙱",
-            "deactivated": "󰌾"
-        }
+    "format": "{capacity}% {icon} ",
+    "format-charging": "{capacity}%  ",
+    "format-icons": ["", "", "", "", ""],
+    "max-length": 30
+  },
+  "custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.sh",
+    "format": {},
+    "return-type": "json"
+  },
+  "clock": {
+    "format-alt": "{:%a, %d. %b  %H:%M}"
+  },
+  "network": {
+    "interface": "wlan0",
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%)  ",
+    "format-ethernet": "{ifname}  ",
+    "format-disconnected": "No wifi",
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+    "tooltip-format-ethernet": "{ifname}  ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "on-click": "~/my_scripts/wifi_wofi.sh"
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "show-special": true
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "icon": true,
+    "icon-size": 20,
+    "rewrite": {
+      "(.*) - Mozilla Firefox": "$1",
+      "(.*) - zsh": "> [$1]"
     }
+  },
+  "custom/logo": {
+    "format": "<span font='17' rise='-1000'>  </span>",
+    "on-click": "~/my_scripts/logout.sh"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} ",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "flatpak run com.saivert.pwvucontrol"
+  },
+  "custom/bluetooth": {
+    "exec": "~/.config/waybar/scripts/bluetooth.sh",
+    "format": {},
+    "return-type": "json",
+    "on-click": "~/my_scripts/blue_wofi.sh"
+  },
+  "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} <i>{title} - {artist}</i>",
+    "player-icons": {
+      "default": "<span font='15' rise='-1000'>󰐊</span>",
+      "mpv": "<span font='15' rise='-1000'>🎵</span>"
+    },
+    "status-icons": {
+      "paused": "<span font='15' rise='-1000'>󰏤</span>"
+    },
+    "max-length": 50
+  },
+  "custom/skip": {
+    "format": "<span font='15' rise='-1000'>󰒭</span>",
+    "on-click": "playerctl next track"
+  },
+  "custom/go-back": {
+    "format": "<span font='15' rise='-1000'>󰒮</span>",
+    "on-click": "playerctl previous track"
+  },
+  "cpu": {
+    "format": "{usage}% 󰻠",
+    "on-click": "alacritty -e htop"
+  },
+  "custom/temperature_gpu": {
+    "exec": "~/.config/waybar/scripts/temp_gpu.sh",
+    "format": {},
+    "return-type": "json"
+  },
+  "custom/temperature_cpu": {
+    "exec": "~/.config/waybar/scripts/temp_cpu.sh",
+    "format": {},
+    "return-type": "json"
+  },
+  "memory": {
+    "format": "  {}%  ",
+    "on-click": "alacritty -e htop"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "{percentage_used}% 󰨣",
+    "path": "/",
+    "on-click": "alacritty -e htop"
+  },
+  "group/hardware": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-memory",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "cpu",
+      "custom/temperature_cpu",
+      "custom/temperature_gpu",
+      "disk",
+      "memory"
+    ]
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "tooltip": true,
+    "format-icons": {
+      "activated": "󱙱",
+      "deactivated": "󰌾"
+    }
+  }
 }

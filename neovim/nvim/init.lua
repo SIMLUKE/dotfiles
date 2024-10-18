@@ -167,3 +167,16 @@ cmp.setup({
 })
 vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_scale_factor = 0.8
+
+-- Hyprlang LSP
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = { "*.hl", "hypr*.conf" },
+  callback = function(event)
+    vim.lsp.start({
+      name = "hyprlang",
+      cmd = { vim.fn.expand("$HOME") .. "/go/bin/hyprls" },
+      root_dir = vim.fn.getcwd(),
+      silent = true,
+    })
+  end,
+})
