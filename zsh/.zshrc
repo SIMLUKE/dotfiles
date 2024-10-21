@@ -68,9 +68,9 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 
 # Preference
  if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='emacs --with-profile tiny'
+   export EDITOR='nvim'
  else
-   export EDITOR='emacs --with-profile tiny'
+   export EDITOR='nvim'
  fi
  export BROWSER=firefox
 
@@ -116,7 +116,7 @@ alias mkBIGdb='make debug_w_libs debug -s'
 alias cacabomb='v=0;while [[ $v != "10" ]];do cacademo &;v=$((value+1));done'
 alias rotate_normal='wlr-randr --output eDP-1 --transform normal'
 alias rotate_up='wlr-randr --output eDP-1 --transform 180'
-alias remove_package='pacman -Qe | fzf -m | cut -d " " -f 1 | xargs sudo pacman -Rns --noconfirm'
+alias remove_package='yay -Qe | fzf -m | cut -d " " -f 1 | xargs yay -Rns --noconfirm'
 wipe_docker() {
     docker-compose down
     docker system prune -a

@@ -64,6 +64,15 @@ window#waybar {
   opacity: 1;
 }
 
+#submap {
+  color: @WhiteColor;
+  background: @SecondColor;
+  border-radius: 4px;
+  padding: 0px 5px;
+  margin: 4px 3px;
+  transition: all 0.3s ease-in-out;
+}
+
 #idle_inhibitor.activated {
   color: #525452;
 }
