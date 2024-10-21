@@ -2,7 +2,7 @@ $FirstColor = rgb(debcf9)
 $SecondColor = rgb(dba8e4)
 $ThirdColor = rgb(c1a3e1)
 $FourthColor = rgb(c6b0fa)
-$WhiteColor = rgb(cdbbdd)
+$WhiteColor = rgb(e0d5eb)
 
 $BackgroundColor1 = rgb(292A30)
 $BackgroundColor2 = rgb(40414a)

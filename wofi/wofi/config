@@ -12,4 +12,5 @@ content_halign=fill
 insensitive=true
 allow_images=true
 image_size=35
-gtk_dark=true
+colors=~/.config/colors/MainColors-wofi.txt
+

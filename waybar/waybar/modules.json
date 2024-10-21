@@ -34,20 +34,23 @@
     "tooltip-format-ethernet": "{ifname}  ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "~/my_scripts/wifi_wofi.sh"
+    "on-click": "~/my_scripts/wifi_wofi.sh --rofi"
   },
   "hyprland/workspaces": {
     "on-click": "activate",
     "active-only": false,
     "all-outputs": true,
-    "show-special": true
+    "show-special": true,
+    "persistent-workspaces": {
+      "*": 5
+    }
   },
   "hyprland/window": {
     "format": "{}",
     "icon": true,
     "icon-size": 20,
     "rewrite": {
-      "(.*) - Mozilla Firefox": "$1",
+      "(.*) -- Mozilla Firefox": "$1",
       "(.*) - zsh": "> [$1]"
     }
   },
@@ -74,7 +77,7 @@
     "exec": "~/.config/waybar/scripts/bluetooth.sh",
     "format": {},
     "return-type": "json",
-    "on-click": "~/my_scripts/blue_wofi.sh"
+    "on-click": "rofi-bluetooth"
   },
   "mpris": {
     "format": "{player_icon} {title} - {artist}",

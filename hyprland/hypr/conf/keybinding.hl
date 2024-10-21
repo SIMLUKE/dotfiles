@@ -8,13 +8,13 @@ $mainMod = SUPER
 
 # Applications
 bind = $mainMod, RETURN, exec, kitty
-bind = $mainMod, R, exec, wofi
+bind = $mainMod, R, exec, rofi -show drun
 bind = $mainMod, B, exec, firefox
 bind = $mainMod, W, exec, emacsclient -c
 bind = $mainMod, N, exec, neovide
 bind = $mainMod, P, exec, ~/my_scripts/logout.sh
 bind = $mainMod, L, exec, playerctl pause; swaylock -f
-bind = $mainMod, O, exec, ~/my_scripts/screenshot.sh -w
+bind = $mainMod, O, exec, rofi-screenshot
 bind = $mainMod SHIFT, W, exec, sed -i '' $HOME/.config/waybar/config
 bind = $mainMod SHIFT, R, exec, ~/my_scripts/rotate.sh
 bind = $mainMod, E, exec, thunar

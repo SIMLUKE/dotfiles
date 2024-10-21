@@ -224,21 +224,21 @@ device_menu() {
 
     # Match chosen option to command
     case $chosen in
-        "" | $divider)
-            echo "No option chosen."
-            ;;
-        $connected)
-            toggle_connection $mac
-            ;;
-        $paired)
-            toggle_paired $mac
-            ;;
-        $trusted)
-            toggle_trust $mac
-            ;;
-        $goback)
-            show_menu
-            ;;
+    "" | $divider)
+        echo "No option chosen."
+        ;;
+    $connected)
+        toggle_connection $mac
+        ;;
+    $paired)
+        toggle_paired $mac
+        ;;
+    $trusted)
+        toggle_trust $mac
+        ;;
+    $goback)
+        show_menu
+        ;;
     esac
 }
 
@@ -272,26 +272,26 @@ show_menu() {
 
     # Match chosen option to command
     case $chosen in
-        "" | $divider)
-            echo "No option chosen."
-            ;;
-        $power)
-            toggle_power
-            ;;
-        $scan)
-            toggle_scan
-            ;;
-        $discoverable)
-            toggle_discoverable
-            ;;
-        $pairable)
-            toggle_pairable
-            ;;
-        *)
-            device=$(bluetoothctl devices | grep "$chosen")
-            # Open a submenu if a device is selected
-            if [[ $device ]]; then device_menu "$device"; fi
-            ;;
+    "" | $divider)
+        echo "No option chosen."
+        ;;
+    $power)
+        toggle_power
+        ;;
+    $scan)
+        toggle_scan
+        ;;
+    $discoverable)
+        toggle_discoverable
+        ;;
+    $pairable)
+        toggle_pairable
+        ;;
+    *)
+        device=$(bluetoothctl devices | grep "$chosen")
+        # Open a submenu if a device is selected
+        if [[ $device ]]; then device_menu "$device"; fi
+        ;;
     esac
 }
 
@@ -299,10 +299,10 @@ show_menu() {
 wofi_command="wofi -d -i -p"
 
 case "$1" in
-    --status)
-        print_status
-        ;;
-    *)
-        show_menu
-        ;;
+--status)
+    print_status
+    ;;
+*)
+    show_menu
+    ;;
 esac
