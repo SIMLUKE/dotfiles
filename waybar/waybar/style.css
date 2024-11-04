@@ -63,6 +63,9 @@ window#waybar {
   transition: all 0.3s ease-in-out;
   opacity: 1;
 }
+#workspaces button.special {
+  margin-left: 10px;
+}
 
 #submap {
   color: @WhiteColor;

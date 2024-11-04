@@ -46,7 +46,11 @@
     "window-rewrite": {
       "class<firefox>": "",
       "class<neovide>": "",
-      "title<*nvim*>": ""
+      "class<teams-for-linux>": "󰊻",
+      "class<.*emacs.*>": "",
+      "title<.*nvim.*>": "",
+      "title<.*Discord.*>": "",
+      "class<libreoffice-impress>": "󱎐"
     },
     "persistent-workspaces": {
       "*": 5
@@ -57,7 +61,7 @@
     "icon": true,
     "icon-size": 20,
     "rewrite": {
-      "(\\W) -- Mozilla Firefox": "$1"
+      ".* -- Mozilla Firefox": "$1"
     }
   },
   "hyprland/submap": {

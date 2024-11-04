@@ -2,6 +2,7 @@
 # Workspaces rules
 # ----------------------------------------------------- 
 
-workspace=special:󱓧, on-created-empty:wofi
+workspace=special:󱓧, on-created-empty:rofi -show drun
 workspace=special:, on-created-empty:deezer
-workspace=special:, on-created-empty:firefox --class WebApp-discord1096 -name WebApp-discord1096 --profile ~/.local/share/ice/firefox/discord1096 --no-remote https://discord.com/app
+# workspace=special:, on-created-empty:firefox --class WebApp-discord1096 -name WebApp-discord1096 --profile ~/.local/share/ice/firefox/discord1096 --no-remote https://discord.com/app
+workspace=special:, on-created-empty:discord

@@ -42,4 +42,7 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
   },
+  {
+    "MunifTanjim/eslint.nvim",
+  },
 }

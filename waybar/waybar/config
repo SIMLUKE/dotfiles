@@ -38,9 +38,7 @@
     ],
 
     "modules-center": [
-        "custom/go-back",
         "mpris",
-        "custom/skip"
     ],
 
     "modules-right": [

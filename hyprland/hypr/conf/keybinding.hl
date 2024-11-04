@@ -14,10 +14,10 @@ bind = $mainMod, W, exec, emacsclient -c
 bind = $mainMod, N, exec, neovide
 bind = $mainMod, P, exec, ~/my_scripts/logout.sh
 bind = $mainMod, L, exec, playerctl pause; swaylock -f
-bind = $mainMod, O, exec, rofi-screenshot
+bind = $mainMod, O, exec, ~/my_scripts/screenshot.sh -w
 bind = $mainMod SHIFT, W, exec, sed -i '' $HOME/.config/waybar/config
 bind = $mainMod SHIFT, R, exec, ~/my_scripts/rotate.sh
-bind = $mainMod, E, exec, thunar
+bind = $mainMod, E, exec, kitty -e spf
 bind = $mainMod, H, exec, hyprpicker | xclip -selection c
 bind = ,XF86PowerOff, exec, swaylock -f; systemctl suspend
 bind = $mainMod, M, exec, ~/.config/my_dwall/change_conf.sh
@@ -30,18 +30,24 @@ bind = $mainMod, V, hyprexpo:expo, toggle
 bind = $mainMod SHIFT, Return, exec, [float] kitty
 bind = $mainMod ALT, Return, togglespecialworkspace, 󱓧
 bind = $mainMod ALT, Backspace, movetoworkspace, special:󱓧
-bind = $mainMod, S, togglespecialworkspace,
 bind = $mainMod, D , togglespecialworkspace,
 
 # Music
-bind = $mainMod SHIFT, S, submap, music
+bind = $mainMod, S, togglespecialworkspace,
+bind = $mainMod, S, submap, music
 
 submap = music
 bind = , left , exec, playerctl previous track
 bind = , right , exec, playerctl next track
 bind = , space , exec, playerctl play-pause
-bind = , escape, submap, reset
-bind = $mainMod SHIFT, S, submap, reset
+bind = , B, exec, rofi-bluetooth
+bind = , A, exec, flatpak run com.saivert.pwvucontrol
+bind = $mainMod, Q, killactive
+
+bind = $mainMod, escape, submap, reset
+bind = $mainMod, S, togglespecialworkspace,
+bind = $mainMod, S, submap, reset
+
 submap = reset 
 
 # Windows

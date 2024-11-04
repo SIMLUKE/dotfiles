@@ -2,6 +2,9 @@
 # Autostart
 # -----------------------------------------------------
 
+# hack fix
+exec-once = hyprpm reload
+
 # Load Notification Manager
 exec-once = mako
 
@@ -30,7 +33,8 @@ exec-once = ~/my_scripts/power_looker.sh
 # # wpaperd
 # exec-once = ~/.cargo/bin/wpaperd
 
-exec-once = xhost +SI:localuser:root
-
+# startpage
 exec-once = python -m http.server 1234 --directory ~/dotfiles/startpage
-exec-once = hyprpm reload
+
+# more hack fix
+exec-once = xhost +SI:localuser:root
