@@ -6,13 +6,13 @@ DOT_CONF	?=	$$HOME/.config/
 
 PACKAGES	=	cmake	\
 			emacs	\
+			neovim	\
+			neovid	\
 			zsh	\
 			thunar	\
 			stow	\
 			man-db	\
 			fzf	\
-			meson	\
-			cargo	\
 			scdoc	\
 			libxkbcommon	\
 			neofetch	\
@@ -21,28 +21,35 @@ PACKAGES	=	cmake	\
 			pipewire-audio	\
 			pipewire-jack	\
 			pipewire-pulse	\
+			wireplumber	\
 			blueman	\
 			bluez	\
-			pavucontrol	\
+			flatpak	\
 			inotify-tools	\
 			swappy	\
 			grim	\
-			xclip	\
+			wl-clipboard	\
 			slurp	\
 			xdg-user-dirs	\
 			brightnessctl	\
-			hyprpaper	\
 			hypridle	\
 			waybar	\
 			mako	\
+			rofi-wayland	\
 
-YAY_PACKAGES	=	opera	\
+YAY_PACKAGES	=	firefox	\
 			swaylock-effects	\
 			spicetify-cli	\
-			spotify	\
+			deezer	\
 			swww	\
 			ttf-font-logos	\
-			sddm-sugar-dark	\
+			nerd-fonts	\
+			rofi-nerdy-git	\
+			rofi-bluetooth-git	\
+			rofi-calc-git	\
+			webapp-manager	\
+
+FLATPAK_PACKAGES	=	pwvucontrol	\
 
 all: _zsh _emacs _swaylock _wofi _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors
 
@@ -118,6 +125,9 @@ dependencies:
 
 yay_dependencies:
 	yay -Sy $(YAY_PACKAGES)
+
+flatpak_dependencies:
+	flatpak install $(FLATPAK_PACKAGES)
 
 sys_calls:
 	sudo systemctl enable bluetooth

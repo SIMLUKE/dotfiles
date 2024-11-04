@@ -8,6 +8,7 @@ require("conform").setup({
     typescript = { "prettierd", "prettier", stop_after_first = true },
     json = { "prettierd", "prettier", stop_after_first = true },
     css = { "prettierd", "prettier", stop_after_first = true },
+    c = { "clang-format", "clang-format", stop_after_first = true },
   },
 })
 require("conform").setup({
@@ -153,11 +154,6 @@ require("scrollEOF").setup({
   disabled_modes = {},
 })
 
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
-vim.opt.relativenumber = false
 require("neo-tree").setup({
   event_handlers = {
     {
