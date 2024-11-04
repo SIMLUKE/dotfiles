@@ -15,8 +15,7 @@ selected=$(
 echo $selected
 
 if [ -n "$selected" ]; then
-    #dir_name=$(basename "$(dirname "$selected")")
-    dir_name=$selected
+    dir_name=$(basename $selected)
     echo "$dir_name" >~/.config/my_dwall/wallpaper.conf
     update_wallpaper
 fi

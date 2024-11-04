@@ -3,8 +3,8 @@
 cp ~/.emacs.default/init.el ~/Emacs-config/.emacs.default/
 cp ~/.emacs.tiny/init.el ~/Emacs-config/.emacs.tiny/
 
-cp ~/.emacs.default/custom/* ~/Emacs-config/.emacs.default/custom/
-cp ~/.emacs.tiny/custom/* ~/Emacs-config/.emacs.tiny/custom/
+cp -r ~/.emacs.default/custom/* ~/Emacs-config/.emacs.default/custom/
+cp -r ~/.emacs.tiny/custom/* ~/Emacs-config/.emacs.tiny/custom/
 
 cp ~/.emacs.default/epitech/* ~/Emacs-config/.emacs.default/epitech/
 cp ~/.emacs.tiny/epitech/* ~/Emacs-config/.emacs.tiny/epitech/

@@ -62,6 +62,7 @@ _zsh_plugins:
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 _emacs:
+	rm ~/.emacs.default/own_conf/conf.el
 	$(STOW) --target=$(HOME) --restow emacs
 
 _swaylock:
@@ -78,6 +79,9 @@ _hyprland:
 
 _scripts:
 	$(STOW) --target=$(HOME) --restow scripts
+
+_clang_conf:
+	$(STOW) --target=$(HOME) --restow clang
 
 _waybar:
 	$(STOW) --target=$(DOT_CONF) --restow waybar

@@ -1,5 +1,6 @@
 [
 {
+    "id": "waybar-top",
     "position": "top",
     "layer": "top",
     "height": 35,
@@ -26,9 +27,10 @@
 },
 
 {
+    "id": "waybar-bottom",
     "position": "bottom",
     "layer": "top",
-    "height": 8,
+    "height": 25,
     "spacing": 12,
 
     "include": ["~/.config/waybar/modules.json"],

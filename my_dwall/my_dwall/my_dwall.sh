@@ -4,6 +4,8 @@ source ~/.config/my_dwall/dwall_func.sh
 
 current_hour=$(date +%H)
 
+echo $current_hour
+
 update_wallpaper
 
 while true; do

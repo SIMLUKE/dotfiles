@@ -10,15 +10,14 @@ function update_wallpaper() {
         config="$HOME/.config/my_dwall/images/$(cat "$config_file")"
     else
         if [ ! -d "$config"]; then
-           echo "Error: image folder '$config' not found."
-           exit 1
+            echo "Error: image folder '$config' not found."
+            exit 1
         fi
         echo "Error: Configuration file '$config_file' not found."
         exit 1
     fi
 
     local current_hour=$(date +%H)
-
     if [ "${current_hour:0:1}" == "0" ]; then
         current_hour="${current_hour:1}"
     fi
