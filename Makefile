@@ -35,13 +35,17 @@ PACKAGES	=	cmake	\
 			hypridle	\
 			waybar	\
 			mako	\
+			feh	\
+			mpv	\
 			rofi-wayland	\
+			ranger	\
 
 YAY_PACKAGES	=	firefox	\
 			swaylock-effects	\
 			spicetify-cli	\
 			deezer	\
 			swww	\
+			wf-recorder	\
 			ttf-font-logos	\
 			nerd-fonts	\
 			rofi-nerdy-git	\
@@ -51,7 +55,7 @@ YAY_PACKAGES	=	firefox	\
 
 FLATPAK_PACKAGES	=	pwvucontrol	\
 
-all: _zsh _emacs _swaylock _wofi _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors
+all: _zsh _emacs _swaylock _wofi _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -82,6 +86,9 @@ _scripts:
 
 _clang_conf:
 	$(STOW) --target=$(HOME) --restow clang
+
+_mimeapps:
+	$(STOW) --target=$(DOT_CONF) --restow mimeapps
 
 _waybar:
 	$(STOW) --target=$(DOT_CONF) --restow waybar

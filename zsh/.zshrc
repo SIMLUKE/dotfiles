@@ -8,6 +8,7 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 # export TERM=xterm-24bits
 QT_QPA_PLATFORM=xcb
 HIST_STAMPS="mm/dd/yyyy"
+export RANGER_LOAD_DEFAULT_RC="FALSE"
 
 # Installed paths
 export GOPATH=$HOME/go
@@ -31,26 +32,26 @@ else
     export ZSH_THEME="kphoen"
 fi
 
-Pimp tty colors
-if [ "$TERM" = "linux" ]; then
-   echo -en "\e]P0232323" #black
-   echo -en "\e]P82B2B2B" #darkgrey
-   echo -en "\e]P1D75F5F" #darkred
-   echo -en "\e]P9E33636" #red
-   echo -en "\e]P287AF5F" #darkgreen
-   echo -en "\e]PA98E34D" #green
-   echo -en "\e]P3D7AF87" #brown
-   echo -en "\e]PBFFD75F" #yellow
-   echo -en "\e]P48787AF" #darkblue
-   echo -en "\e]PC7373C9" #blue
-   echo -en "\e]P5BD53A5" #darkmagenta
-   echo -en "\e]PDD633B2" #magenta
-   echo -en "\e]P65FAFAF" #darkcyan
-   echo -en "\e]PE44C9C9" #cyan
-   echo -en "\e]P7E5E5E5" #lightgrey
-   echo -en "\e]PFFFFFFF" #white
-   clear #for background artifacting
-fi
+ #Pimp tty colors
+ if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P0232323" #black
+    echo -en "\e]P82B2B2B" #darkgrey
+    echo -en "\e]P1D75F5F" #darkred
+    echo -en "\e]P9E33636" #red
+    echo -en "\e]P287AF5F" #darkgreen
+    echo -en "\e]PA98E34D" #green
+    echo -en "\e]P3D7AF87" #brown
+    echo -en "\e]PBFFD75F" #yellow
+    echo -en "\e]P48787AF" #darkblue
+    echo -en "\e]PC7373C9" #blue
+    echo -en "\e]P5BD53A5" #darkmagenta
+    echo -en "\e]PDD633B2" #magenta
+    echo -en "\e]P65FAFAF" #darkcyan
+    echo -en "\e]PE44C9C9" #cyan
+    echo -en "\e]P7E5E5E5" #lightgrey
+    echo -en "\e]PFFFFFFF" #white
+    clear #for background artifacting
+ fi
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -122,5 +123,3 @@ wipe_docker() {
     docker system prune -a
 }
 alias cleanAtess='prettier --write . ; ruff check --fix ; ruff format'
-# docker pull ghcr.io/gitleaks/gitleaks:latest
-source /home/lukeskieur/Documents/poc/BruteForce/autocompletion/zsh/_bruteforce
