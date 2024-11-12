@@ -16,7 +16,6 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:"$HOME/.cargo/bin/"
 export PATH="$PATH:/home/lukeskieur/.local/bin"
-export PATH="$PATH:/home/lukeskieur/Documents/poc/BruteForce/"
 
 # Cool themes
 #ZSH_THEME="robbyrussell"
@@ -29,7 +28,7 @@ if [[ -n "$INSIDE_EMACS" ]]; then
         cd ../
     done
 else
-    export ZSH_THEME="kphoen"
+    export ZSH_THEME="pastel"
 fi
 
  #Pimp tty colors

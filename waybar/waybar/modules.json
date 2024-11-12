@@ -46,10 +46,11 @@
     "window-rewrite": {
       "class<firefox>": "",
       "class<neovide>": "",
-      "class<teams-for-linux>": "󰊻",
+      "class<.*teams.*>": "󰊻",
       "class<.*emacs.*>": "",
       "title<.*nvim.*>": "",
       "title<.*Discord.*>": "",
+      "class<obsidian>": "",
       "class<libreoffice-impress>": "󱎐"
     },
     "persistent-workspaces": {
