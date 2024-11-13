@@ -6,6 +6,6 @@ ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 
-PROMPT='%{$fg[magenta]%}%m%{$fg[red]%}%#%{$fg[blue]%}%n%{$reset_color%}-%~ $(git_prompt_info)
+PROMPT='%{$fg[magenta]%}%m%{$fg[red]%}%#%{$fg[blue]%}%n%{$reset_color%} %~ $(git_prompt_info)
 > '
 RPROMPT='${return_code}'

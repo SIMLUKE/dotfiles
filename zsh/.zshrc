@@ -124,3 +124,4 @@ wipe_docker() {
 alias cleanAtess='prettier --write . ; ruff check --fix ; ruff format'
 alias spellfr='hunspell -d fr_FR'
 alias spellen='hunspell'
+alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'

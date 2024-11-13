@@ -23,9 +23,6 @@ bind = ,XF86PowerOff, exec, swaylock -f; systemctl suspend
 bind = $mainMod, M, exec, ~/.config/my_dwall/change_conf.sh
 bind = $mainMod, C, exec, pkill mako
 
-# Plugins
-bind = $mainMod, V, hyprexpo:expo, toggle
-
 # Special workspaces
 bind = $mainMod SHIFT, Return, exec, [float] kitty
 bind = $mainMod ALT, Return, togglespecialworkspace, 󱓧
