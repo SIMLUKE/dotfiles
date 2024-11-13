@@ -122,3 +122,5 @@ wipe_docker() {
     docker system prune -a
 }
 alias cleanAtess='prettier --write . ; ruff check --fix ; ruff format'
+alias spellfr='hunspell -d fr_FR'
+alias spellen='hunspell'
