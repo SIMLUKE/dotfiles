@@ -125,3 +125,9 @@ alias cleanAtess='prettier --write . ; ruff check --fix ; ruff format'
 alias spellfr='hunspell -d fr_FR'
 alias spellen='hunspell'
 alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/lukeskieur/programs/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lukeskieur/programs/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/lukeskieur/programs/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lukeskieur/programs/google-cloud-sdk/completion.zsh.inc'; fi

@@ -55,12 +55,10 @@ null_ls.setup({
 require("lspconfig").pyright.setup({
   settings = {
     pyright = {
-      -- Using Ruff's import organizer
       disableOrganizeImports = true,
     },
     python = {
       analysis = {
-        -- Ignore all files for analysis to exclusively use Ruff for linting
         ignore = { "*" },
       },
     },
@@ -70,11 +68,14 @@ require("lspconfig").pyright.setup({
 require("lspconfig").ruff_lsp.setup({
   init_options = {
     settings = {
-      -- Any extra CLI arguments for `ruff` go here.
       args = {},
     },
   },
 })
+
+require("lspconfig").clangd.setup({})
+
+require("lspconfig").bashls.setup({})
 
 local eslint = require("eslint")
 
@@ -154,6 +155,21 @@ require("scrollEOF").setup({
   disabled_modes = {},
 })
 
+require("mini.surround").setup({})
+
+require("nvim-treesitter.configs").setup({
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+  modules = {},
+  sync_install = false,
+
+  auto_install = true,
+
+  ignore_install = {},
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+})
 require("neo-tree").setup({
   event_handlers = {
     {

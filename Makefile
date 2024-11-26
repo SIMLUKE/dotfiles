@@ -55,7 +55,9 @@ YAY_PACKAGES	=	firefox	\
 
 FLATPAK_PACKAGES	=	pwvucontrol	\
 
-all: _zsh _zsh_custom _emacs _swaylock _wofi _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors
+NPM_PACKAGES	=	bashls	\
+
+all: _zsh _zsh_custom _emacs _swaylock _wofi _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors _clang_conf
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -142,6 +144,9 @@ yay_dependencies:
 
 flatpak_dependencies:
 	flatpak install $(FLATPAK_PACKAGES)
+
+npm_dependencies:
+	sudo npm -g i $(NPM_PACKAGES)
 
 sys_calls:
 	sudo systemctl enable bluetooth
