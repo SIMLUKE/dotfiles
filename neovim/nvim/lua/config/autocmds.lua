@@ -10,3 +10,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.expandtab = true -- Convert tabs to spaces
   end,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "h" },
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})

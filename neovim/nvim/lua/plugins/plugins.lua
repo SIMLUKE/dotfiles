@@ -1,9 +1,11 @@
 return {
   { "natecraddock/workspaces.nvim" },
   { "jose-elias-alvarez/null-ls.nvim" },
+  { "lg-epitech/headers.nvim" },
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+
     opts = {},
   },
   {
@@ -23,9 +25,7 @@ return {
       "sindrets/diffview.nvim", -- optional - Diff integration
 
       -- Only one of these is needed.
-      "nvim-telescope/telescope.nvim", -- optional
       "ibhagwan/fzf-lua", -- optional
-      "echasnovski/mini.pick", -- optional
     },
     config = true,
   },

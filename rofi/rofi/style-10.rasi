@@ -10,7 +10,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window,calc,nerdy";
+	modi:                       "drun,calc,nerdy,run,window";
     show-icons:                 true;
     display-drun:               "";
     display-run:                "";

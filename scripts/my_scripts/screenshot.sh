@@ -50,7 +50,7 @@ run_rofi() {
 }
 
 # Screenshot
-time=$(date +%Y-%m-%d-%H-%M-%S)
+time=$(date +%Y-%m-%d_%H:%M:%S)
 dir="$(xdg-user-dir PICTURES)/Screenshots"
 file="Screenshot_${time}.png"
 

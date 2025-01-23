@@ -22,11 +22,11 @@ while true; do
         annimation
     else
         if [ $capacity -le $warning ]; then
-           echo "{\"text\": \"$capacity% ${icons[$(($capacity / 10))]}\", \"class\": \"discharging\"}"
+            echo "{\"text\": \"$capacity% ${icons[$(($capacity / 10))]}\", \"class\": \"discharging\"}"
         elif [ $capacity -le $critical ]; then
-           echo "{\"text\": \"$capacity% ${icons[$(($capacity / 10))]}\", \"class\": \"discharging\"}"
+            echo "{\"text\": \"$capacity% ${icons[$(($capacity / 10))]}\", \"class\": \"discharging\"}"
         else
-           echo "{\"text\": \"$capacity% ${icons[$(($capacity / 10))]}\", \"class\": \"discharging\"}"
+            echo "{\"text\": \"$capacity% ${icons[$(($capacity / 10))]}\", \"class\": \"discharging\"}"
         fi
         sleep 2
     fi

@@ -45,13 +45,15 @@
     "window-rewrite-default": "",
     "window-rewrite": {
       "class<firefox>": "",
+      "class<.*Deezer.*>": "",
       "class<neovide>": "",
       "class<.*teams.*>": "󰊻",
       "class<.*emacs.*>": "",
       "title<.*nvim.*>": "",
       "title<.*Discord.*>": "",
       "class<obsidian>": "",
-      "class<libreoffice-impress>": "󱎐"
+      "class<libreoffice-impress>": "󱎐",
+      "class<Postman>": ""
     },
     "persistent-workspaces": {
       "*": 5

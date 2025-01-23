@@ -4,7 +4,7 @@ const CONFIG = new Config({
     currency: "USD",
     refreshIn: 10,
   },
-  overrideStorage: true, // override localStorage with fixed userconfig values
+  overrideStorage: true,
   temperature: {
     location: "Paris, France",
     scale: "C",
@@ -23,7 +23,6 @@ const CONFIG = new Config({
     },
   },
   keybindings: {
-    //"t": 'todo-list',
     s: "search-bar",
     h: "tabs-list",
   },
