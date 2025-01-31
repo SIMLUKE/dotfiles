@@ -7,7 +7,6 @@ DOT_CONF	?=	$$HOME/.config/
 PACKAGES	=	cmake	\
 			emacs	\
 			neovim	\
-			neovid	\
 			zsh	\
 			thunar	\
 			stow	\
@@ -42,7 +41,6 @@ PACKAGES	=	cmake	\
 
 YAY_PACKAGES	=	firefox	\
 			swaylock-effects	\
-			spicetify-cli	\
 			deezer	\
 			swww	\
 			wf-recorder	\

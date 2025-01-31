@@ -24,11 +24,12 @@ return {
       "nvim-lua/plenary.nvim", -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
-      -- Only one of these is needed.
-      "ibhagwan/fzf-lua", -- optional
+      "ibhagwan/fzf-lua",
     },
     config = true,
   },
+  { "notomo/promise.nvim" },
+  { "lewis6991/async.nvim" },
   {
     "norcalli/nvim-colorizer.lua",
   },
@@ -93,4 +94,5 @@ return {
     end,
     ft = { "markdown" },
   },
+  { "kevinhwang91/nvim-ufo" },
 }

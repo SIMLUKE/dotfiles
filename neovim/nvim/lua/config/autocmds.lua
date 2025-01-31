@@ -3,7 +3,7 @@
 -- Add any additional autocmds here
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "typescript", "typescriptreact", "lua" },
+  pattern = { "typescript", "typescriptreact", "lua", "cpp" },
   callback = function()
     vim.bo.shiftwidth = 2 -- Number of spaces for indentation
     vim.bo.tabstop = 2 -- Number of spaces for a tab
