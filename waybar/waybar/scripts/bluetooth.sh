@@ -1,6 +1,5 @@
 #!/bin/bash
 
-device_paired=$(bluetoothctl info | grep Name | cut -f 2 | cut -d' ' -f 2)
 icons=("󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹")
 warning=30
 critical=10
@@ -8,6 +7,7 @@ critical=10
 while true; do
     if bluetoothctl info >/dev/null 2>&1; then
         capacity=$(bluetoothctl info | grep "Battery Percentage" | awk -F '[()%]' '{print $2}')
+        device_paired=$(bluetoothctl info | grep Name | cut -f 2 | cut -d' ' -f 2)
         if ! [[ -z "$capacity" ]]; then
             if [ "$capacity" -eq 100 ]; then
                 echo "{\"text\": \"$device_paired-$capacity% 󰁹\"}"

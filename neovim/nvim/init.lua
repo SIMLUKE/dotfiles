@@ -102,7 +102,7 @@ vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_scale_factor = 0.8
 
 -- LSP
-
+require("lspconfig").asm_lsp.setup({})
 -- Hyprlang LSP
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = { "*.hl", "hypr*.conf" },

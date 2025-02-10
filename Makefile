@@ -38,9 +38,9 @@ PACKAGES	=	cmake	\
 			mpv	\
 			rofi-wayland	\
 			ranger	\
+			hyprlock	\
 
 YAY_PACKAGES	=	firefox	\
-			swaylock-effects	\
 			deezer	\
 			swww	\
 			wf-recorder	\

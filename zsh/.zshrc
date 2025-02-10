@@ -95,6 +95,13 @@ get_core() {
     rm $core
 }
 
+update_zsh() {
+    rm ~/.oh-my-zsh/custom
+    omz update
+    rm ~/.oh-my-zsh/custom
+    make -C ~/dotfiles
+}
+
 # My remplacements
 cd() {builtin cd "$@" &&
           ls .
