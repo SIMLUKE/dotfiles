@@ -17,17 +17,19 @@ return {
     "stevearc/conform.nvim",
     opts = {},
   },
-  { "hrsh7th/nvim-cmp" },
+
   {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
-      "ibhagwan/fzf-lua",
+      -- Only one of these is needed.
+      "ibhagwan/fzf-lua", -- optional
     },
     config = true,
   },
+  { "hrsh7th/nvim-cmp" },
   { "notomo/promise.nvim" },
   { "lewis6991/async.nvim" },
   {

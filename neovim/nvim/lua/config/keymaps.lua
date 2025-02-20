@@ -4,6 +4,5 @@
 vim.keymap.set("n", "<CR>", "m`o<Esc>``")
 vim.keymap.set("n", "<S-CR>", "m`O<Esc>``")
 vim.keymap.set("n", "<leader>p", "<cmd>WorkspacesOpen<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>gG", "<cmd>Neogit<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>t", "<cmd>Trouble<CR>", { noremap = true, silent = true })
 vim.keymap.del("n", "<leader>gg")
