@@ -101,6 +101,11 @@ update_zsh() {
     omz update
     rm ~/.oh-my-zsh/custom
     make -C ~/dotfiles
+    source ~/.zshrc
+}
+
+ignoreFile() {
+    echo "$1" >> ./.gitignore
 }
 
 # My remplacements
@@ -143,5 +148,6 @@ if [ -f '/home/lukeskieur/programs/google-cloud-sdk/path.zsh.inc' ]; then . '/ho
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/lukeskieur/programs/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lukeskieur/programs/google-cloud-sdk/completion.zsh.inc'; fi
+
 
 [ -f "/home/lukeskieur/.ghcup/env" ] && . "/home/lukeskieur/.ghcup/env" # ghcup-env

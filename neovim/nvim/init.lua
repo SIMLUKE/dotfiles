@@ -119,9 +119,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 require("lspconfig").bashls.setup({})
 
 local nvim_lsp = require("lspconfig")
-require("lspconfig").hls.setup({
-  root_dir = nvim_lsp.util.root_pattern(".git"),
-})
+--require("lspconfig").hls.setup({
+--  root_dir = nvim_lsp.util.root_pattern(".git"),
+--})
 
 require("lspconfig").clangd.setup({
   root_dir = nvim_lsp.util.root_pattern(".git", "compile_flags.txt"),

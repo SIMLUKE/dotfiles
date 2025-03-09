@@ -149,11 +149,11 @@
       "transition-left-to-right": false
     },
     "modules": [
+      "memory",
       "cpu",
       "custom/temperature_cpu",
       "custom/temperature_gpu",
-      "disk",
-      "memory"
+      "disk"
     ]
   },
   "idle_inhibitor": {
