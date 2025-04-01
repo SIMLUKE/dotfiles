@@ -26,7 +26,7 @@ while getopts ':ef' flag; do
 done
 
 if [ "$e" = true ]; then
-    docker run --rm -v ".:$DEST_FOLDER" -it epitechcontent/epitest-docker /bin/bash
+    docker run -p 4242:4242 --rm -v ".:$DEST_FOLDER" -it epitechcontent/epitest-docker /bin/bash
 fi
 
 if [ "$f" = true ]; then

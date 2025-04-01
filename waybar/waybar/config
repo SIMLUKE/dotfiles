@@ -47,6 +47,7 @@
         "custom/bluetooth",
         "pulseaudio",
         "backlight",
+        "custom/cava_mviz"
     ]
 }
 ]

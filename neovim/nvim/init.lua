@@ -74,7 +74,7 @@ require("scrollEOF").setup({
 require("mini.surround").setup({})
 
 require("nvim-treesitter.configs").setup({
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
   modules = {},
   sync_install = false,
 
@@ -102,6 +102,7 @@ vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_scale_factor = 0.8
 
 -- LSP
+local nvim_lsp = require("lspconfig")
 require("lspconfig").asm_lsp.setup({})
 -- Hyprlang LSP
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
@@ -110,7 +111,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     vim.lsp.start({
       name = "hyprlang",
       cmd = { vim.fn.expand("$HOME") .. "/go/bin/hyprls" },
-      root_dir = vim.fn.getcwd(),
+      root_dir = "hyprland.conf",
       silent = true,
     })
   end,
@@ -118,7 +119,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 
 require("lspconfig").bashls.setup({})
 
-local nvim_lsp = require("lspconfig")
 --require("lspconfig").hls.setup({
 --  root_dir = nvim_lsp.util.root_pattern(".git"),
 --})
@@ -147,3 +147,21 @@ require("lspconfig").ruff.setup({
     },
   },
 })
+
+local ht = require("haskell-tools")
+local bufnr = vim.api.nvim_get_current_buf()
+local opts = { noremap = true, silent = true, buffer = bufnr }
+-- haskell-language-server relies heavily on codeLenses,
+-- so auto-refresh (see advanced configuration) is enabled by default
+vim.keymap.set("n", "<space>cl", vim.lsp.codelens.run, opts)
+-- Hoogle search for the type signature of the definition under the cursor
+vim.keymap.set("n", "<space>hs", ht.hoogle.hoogle_signature, opts)
+-- Evaluate all code snippets
+vim.keymap.set("n", "<space>ea", ht.lsp.buf_eval_all, opts)
+-- Toggle a GHCi repl for the current package
+vim.keymap.set("n", "<leader>rr", ht.repl.toggle, opts)
+-- Toggle a GHCi repl for the current buffer
+vim.keymap.set("n", "<leader>rf", function()
+  ht.repl.toggle(vim.api.nvim_buf_get_name(0))
+end, opts)
+vim.keymap.set("n", "<leader>rq", ht.repl.quit, opts)

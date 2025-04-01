@@ -163,5 +163,9 @@
       "activated": "󱙱",
       "deactivated": "󰌾"
     }
+  },
+  "custom/cava_mviz": {
+    "exec": "$HOME/.config/waybar/scripts/cava.sh",
+    "format": "{}"
   }
 }

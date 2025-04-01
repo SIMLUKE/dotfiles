@@ -52,8 +52,6 @@ fi
     clear #for background artifacting
  fi
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
 
 # Plugins
 plugins=(
@@ -113,6 +111,10 @@ cd() {builtin cd "$@" &&
           ls .
 }
 
+zl() {
+    z "$@" && ls .
+}
+
 alias cp='cp -r'
 #alias cat='bat'
 alias sl='ls'
@@ -141,6 +143,7 @@ alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/Ve
 alias nw='kitty . &> /dev/null &'
 alias compare='nvim -d /tmp/got.txt /tmp/expected.txt'
 alias nv='nvim'
+alias astekmode='eval "$(ssh-agent -s)" ; ssh-add ~/.ssh/id_astek'
 eval "$(zoxide init zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -148,6 +151,7 @@ if [ -f '/home/lukeskieur/programs/google-cloud-sdk/path.zsh.inc' ]; then . '/ho
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/lukeskieur/programs/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lukeskieur/programs/google-cloud-sdk/completion.zsh.inc'; fi
+
 
 
 [ -f "/home/lukeskieur/.ghcup/env" ] && . "/home/lukeskieur/.ghcup/env" # ghcup-env
