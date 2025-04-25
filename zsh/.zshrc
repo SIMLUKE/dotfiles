@@ -144,6 +144,10 @@ alias nw='kitty . &> /dev/null &'
 alias compare='nvim -d /tmp/got.txt /tmp/expected.txt'
 alias nv='nvim'
 alias astekmode='eval "$(ssh-agent -s)" ; ssh-add ~/.ssh/id_astek'
+alias o='xdg-open'
+nz() {
+    z $0 ; nv .
+}
 eval "$(zoxide init zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.

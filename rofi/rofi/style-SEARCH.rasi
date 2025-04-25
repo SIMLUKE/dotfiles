@@ -1,0 +1,83 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
+
+
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun,calc,nerdy,run,window";
+    show-icons:                 true;
+    display-drun:               "";
+    display-run:                "";
+    display-filebrowser:        "";
+    display-window:             "";
+    display-calc:               "󰃬"; 
+    display-nerdy:              ""; 
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c} · {t}";
+}
+
+/*****----- Global Properties -----*****/
+
+@import "~/.config/colors/MainColors.rasi"
+
+/* ---- Window ---- */
+window {
+	width: 40%;
+	//orientation: horizontal;
+	height: inherit;
+    y-offset: 10px;
+    location: center;
+    border: 2px;
+    border-color: white/25%;
+}
+
+/* ---- Entry ---- */ 
+entry {
+	expand: true;
+	placeholder: " 🔎 Google Search";
+	horizontal-align: 0.5;
+	padding: 15px;
+    children: [ "entry", "message" ];
+	border-radius: inherit;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 horizontal;
+    children:                    [];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    expand:                      true;
+    spacing:                     5px;
+    padding:                     10px;
+    border-radius:               10px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     false;
+    expand:                      false;
+    str:                         "";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     false;
+}
+
