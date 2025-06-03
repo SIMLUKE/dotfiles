@@ -12,5 +12,5 @@ fi
 query=$(echo "" | rofi -dmenu -config $rofi_theme -mesg "$msg")
 if [ ! -z "$query" -a "$query" != " " ]; then
     echo $query | xargs -I{} xdg-open "https://www.google.com/search?q={}"
-    hyprctl dispatch focuswindow class:firefox
+    hyprctl dispatch focuswindow class:zen
 fi

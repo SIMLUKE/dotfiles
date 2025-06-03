@@ -3,6 +3,7 @@
 
 e=false
 f=false
+z=false
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
@@ -11,13 +12,18 @@ LIGHT_CYAN="\e[96m"
 DEST_FOLDER=/usr/app
 
 print_usage() {
-    printf "Usage:\n\t-b : keeps the result files\n\t-v --verbose : debug variables\n"
+    printf "Usage:
+    -e epitech image
+    -z enhanced epitech image
+    -f fedora image
+"
 }
 
-while getopts ':ef' flag; do
+while getopts ':efz' flag; do
     case "${flag}" in
     e) e=true ;;
     f) f=true ;;
+    z) z=true ;;
     *)
         print_usage
         exit 1
@@ -31,4 +37,8 @@ fi
 
 if [ "$f" = true ]; then
     docker run --rm -v ".:$DEST_FOLDER" -it fedora /bin/bash
+fi
+
+if [ "$z" = true ]; then
+    docker run --rm -v ".:$DEST_FOLDER" -it ziad0/enhanced-epitest /bin/bash
 fi

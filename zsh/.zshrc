@@ -71,7 +71,7 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
  else
    export EDITOR='nvim'
  fi
- export BROWSER=firefox
+ export BROWSER=zen-browser
 
 # Gui use of emacs
 ne() {

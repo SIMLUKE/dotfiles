@@ -75,6 +75,7 @@ countdown() {
         id=$(notify-send "Taking shot in : $sec" -p -r $id)
         sleep 1
     done
+    pkill mako
 }
 
 # take shots

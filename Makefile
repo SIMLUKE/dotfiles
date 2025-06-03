@@ -8,6 +8,7 @@ PACKAGES	=	cmake	\
 			emacs	\
 			neovim	\
 			zsh	\
+			zoxide	\
 			thunar	\
 			stow	\
 			man-db	\
