@@ -17,19 +17,19 @@ list_row='1'
 # Options
 layout=$(cat $theme | grep 'USE_ICON' | cut -d'=' -f2)
 if [[ "$layout" == 'NO' ]]; then
-    option_1=" Lock"
-    option_2=" Logout"
-    option_5=" Reboot"
-    option_6=" Shutdown"
-    yes=' Yes'
-    no=' No'
+    option_1=" Lock"
+    option_2="󰍃 Logout"
+    option_5=" Reboot"
+    option_6=" Shutdown"
+    yes=' Yes'
+    no='X No'
 else
-    option_1=""
-    option_2=""
-    option_5=""
-    option_6=""
-    yes=''
-    no=''
+    option_1=""
+    option_2="󰍃"
+    option_5=""
+    option_6=""
+    yes=''
+    no='X'
 fi
 
 # Rofi CMD

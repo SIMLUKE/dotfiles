@@ -15,7 +15,6 @@ PACKAGES	=	cmake	\
 			fzf	\
 			scdoc	\
 			libxkbcommon	\
-			neofetch	\
 			nerd-fonts	\
 			pipewire	\
 			pipewire-audio	\
@@ -41,12 +40,11 @@ PACKAGES	=	cmake	\
 			ranger	\
 			hyprlock	\
 
-YAY_PACKAGES	=	firefox	\
-			deezer	\
+YAY_PACKAGES	=	deezer	\
 			swww	\
 			wf-recorder	\
+			zen-browser-bin	\
 			ttf-font-logos	\
-			nerd-fonts	\
 			rofi-nerdy-git	\
 			rofi-bluetooth-git	\
 			rofi-calc-git	\
@@ -56,7 +54,7 @@ FLATPAK_PACKAGES	=	pwvucontrol	\
 
 NPM_PACKAGES	=	bashls	\
 
-all: _zsh _zsh_custom _emacs _swaylock _wofi _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors _clang_conf
+all: _zsh _zsh_custom _swaylock _wofi _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors _clang_conf
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -133,8 +131,8 @@ wpaperd_install:
 	cd ./wpaperd ; cargo build --release ; cargo install --path="./daemon" && cargo install --path="./cli"
 
 yay_install:
-	git clone https://github.com/Jguer/yay.git
-	cd yay ; makepkg -i
+	git clone https://aur.archlinux.org/yay.git
+	cd yay ; makepkg -si
 
 dependencies:
 	sudo pacman -Sy $(PACKAGES)

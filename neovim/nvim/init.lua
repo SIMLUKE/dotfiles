@@ -124,7 +124,7 @@ require("lspconfig").bashls.setup({})
 --})
 
 require("lspconfig").clangd.setup({
-  root_dir = nvim_lsp.util.root_pattern(".git", "compile_flags.txt"),
+  root_dir = nvim_lsp.util.root_pattern("compile_flags.txt", "CMakeLists.txt", "Makefile", ".git"),
 })
 
 require("lspconfig").pyright.setup({

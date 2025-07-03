@@ -1,7 +1,7 @@
 #!/bin/bash
 
 level=0
-battery_files=/sys/class/power_supply/BAT0/
+battery_files=/sys/class/power_supply/BAT1/
 #battery_files=./
 
 function cooldown() {

@@ -4,7 +4,7 @@ icons=("󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "�
 warning=30
 critical=10
 
-BATTERY_FILES="/sys/class/power_supply/BAT0/status /sys/class/power_supply/BAT0/capacity"
+BATTERY_FILES="/sys/class/power_supply/BAT1/status /sys/class/power_supply/BAT1/capacity"
 
 annimation() {
     for icon in "${icons[@]}"; do
@@ -14,8 +14,8 @@ annimation() {
 }
 
 while true; do
-    status=$(cat /sys/class/power_supply/BAT0/status)
-    capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+    status=$(cat /sys/class/power_supply/BAT1/status)
+    capacity=$(cat /sys/class/power_supply/BAT1/capacity)
     if [ "$capacity" -eq 100 ]; then
         echo "{\"text\": \"$capacity% 󰁹\", \"class\": \"full\"}"
     elif [ "$status" = "Charging" ]; then

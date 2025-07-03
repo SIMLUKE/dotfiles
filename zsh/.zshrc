@@ -73,6 +73,9 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
  fi
  export BROWSER=zen-browser
 
+# SSH
+eval "$(ssh-agent)" ; ssh-add ~/.ssh/id_stud 
+
 # Gui use of emacs
 ne() {
     emacsclient -c -s tiny -a "" "$1" &
@@ -124,8 +127,10 @@ alias fman='compgen -c | fzf | xargs man'
 alias fhistory='history | cut -c 8- | fzf'
 
 # Aliases
+alias pip='./.venv/bin/pip'
+alias py_create_venv='python -m venv .venv'
 alias gdba='gdb --args'
-alias dot='cd ~/dotfiles'
+alias dot='cd ~/Dotfiles'
 alias mkdb='make debug -s'
 alias mkBIGdb='make debug_w_libs debug -s'
 alias cacabomb='v=0;while [[ $v != "5" ]];do cacademo &;v=$((value+1));done'

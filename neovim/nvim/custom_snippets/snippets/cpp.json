@@ -1,0 +1,12 @@
+{
+  "derr": {
+    "prefix": "derr",
+    "body": ["std::cerr << $0 << std::endl;"],
+    "description": "Debug cout"
+  },
+  "dout": {
+    "prefix": "dout",
+    "body": ["std::cout << $0 << std::endl;"],
+    "description": "Debug cerr"
+  }
+}

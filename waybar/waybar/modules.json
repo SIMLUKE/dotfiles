@@ -152,7 +152,6 @@
       "memory",
       "cpu",
       "custom/temperature_cpu",
-      "custom/temperature_gpu",
       "disk"
     ]
   },
