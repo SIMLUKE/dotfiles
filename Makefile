@@ -33,7 +33,7 @@ PACKAGES	=	cmake	\
 			brightnessctl	\
 			hypridle	\
 			waybar	\
-			mako	\
+			swaync	\
 			feh	\
 			mpv	\
 			rofi-wayland	\
@@ -54,7 +54,7 @@ FLATPAK_PACKAGES	=	pwvucontrol	\
 
 NPM_PACKAGES	=	bashls	\
 
-all: _zsh _zsh_custom _swaylock _wofi _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors _clang_conf
+all: _zsh _zsh_custom _swaylock _swaync _wofi _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors _clang_conf
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -74,6 +74,9 @@ _emacs:
 
 _swaylock:
 	$(STOW) --target=$(DOT_CONF) --restow swaylock
+
+_swaync:
+	$(STOW) --target=$(DOT_CONF) --restow swaync
 
 _wofi:
 	$(STOW) --target=$(DOT_CONF) --restow wofi

@@ -23,6 +23,7 @@
         "network",
         "group/hardware",
         "custom/battery",
+        "custom/notification"
     ]
 },
 

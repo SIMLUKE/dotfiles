@@ -1,0 +1,448 @@
+@import "../../.config/colors/MainColors.css";
+
+/*****----- SwayNC Main Window -----*****/
+.notification-center {
+  background-color: @BackgroundColor1;
+  border-radius: 10px;
+  border: 2px solid @FourthColor;
+  padding: 20px;
+  margin: 10px;
+}
+
+.notification-center-header {
+  background-color: transparent;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.notification-center-header-title {
+  color: @WhiteColor;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.notification-center-header-button {
+  background-color: @BackgroundColor2;
+  color: @WhiteColor;
+  border-radius: 10px;
+  padding: 8px 15px;
+  border: none;
+  margin-left: 10px;
+}
+
+.notification-center-header-button:hover {
+  background-color: @FirstColor;
+  color: @BackgroundColor1;
+}
+
+/*****----- Notification List -----*****/
+.notification-list {
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
+}
+
+.notification-list-placeholder {
+  color: @ThirdColor;
+  font-size: 14px;
+  padding: 20px;
+}
+
+/*****----- Individual Notifications -----*****/
+.notification {
+  background-color: @BackgroundColor2;
+  border-radius: 10px;
+  border: 1px solid @FourthColor;
+  padding: 15px;
+  margin: 10px 0px;
+}
+
+.notification:hover {
+  background-color: @ThirdColor;
+  border-color: @FirstColor;
+}
+
+.notification.critical {
+  background-color: #4a2c2a;
+  border-color: #ff6b6b;
+}
+
+.notification.low {
+  background-color: @BackgroundColor2;
+  border-color: @FourthColor;
+  opacity: 0.8;
+}
+
+.notification.normal {
+  background-color: @BackgroundColor2;
+  border-color: @FourthColor;
+}
+
+/*****----- Notification Header -----*****/
+.notification-header {
+  background-color: transparent;
+  padding: 0px 0px 10px 0px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid @FourthColor;
+}
+
+.notification-header-icon {
+  background-color: transparent;
+  padding: 0px;
+  margin-right: 10px;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.notification-header-app-name {
+  color: @FirstColor;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.notification-header-time {
+  color: @ThirdColor;
+  font-size: 12px;
+}
+
+/*****----- Notification Content -----*****/
+.notification-content {
+  background-color: transparent;
+  padding: 0px;
+}
+
+.notification-content-title {
+  color: @WhiteColor;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.notification-content-body {
+  color: @WhiteColor;
+  font-size: 13px;
+}
+
+.notification-content-image {
+  border-radius: 8px;
+  margin-top: 10px;
+  background-color: transparent;
+}
+
+/*****----- Notification Actions -----*****/
+.notification-actions {
+  background-color: transparent;
+  padding: 10px 0px 0px 0px;
+  margin-top: 10px;
+  border-top: 1px solid @FourthColor;
+}
+
+.notification-action {
+  background-color: @BackgroundColor2;
+  color: @WhiteColor;
+  border-radius: 8px;
+  padding: 8px 15px;
+  border: 1px solid @FourthColor;
+  margin-right: 10px;
+}
+
+.notification-action:hover {
+  background-color: @FirstColor;
+  color: @BackgroundColor1;
+  border-color: @FirstColor;
+}
+
+/*****----- Close Button -----*****/
+.notification-close-button {
+  background-color: transparent;
+  color: @ThirdColor;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 0px;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.notification-close-button:hover {
+  background-color: @FirstColor;
+  color: @BackgroundColor1;
+}
+
+/*****----- Control Center -----*****/
+.control-center {
+  background-color: @BackgroundColor1;
+  border-radius: 10px;
+  border: 2px solid @FourthColor;
+  padding: 20px;
+  margin: 10px;
+}
+
+.control-center-header {
+  background-color: transparent;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.control-center-header-title {
+  color: @WhiteColor;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/*****----- Control Center Buttons -----*****/
+.control-center-list {
+  background-color: transparent;
+}
+
+.control-center-list-placeholder {
+  color: @ThirdColor;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.widget-title {
+  color: @WhiteColor;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.widget-title > button {
+  background-color: @BackgroundColor2;
+  color: @WhiteColor;
+  border-radius: 8px;
+  padding: 5px 10px;
+  border: 1px solid @FourthColor;
+  margin-left: 10px;
+}
+
+.widget-title > button:hover {
+  background-color: @FirstColor;
+  color: @BackgroundColor1;
+  border-color: @FirstColor;
+}
+
+/*****----- Widget Styling -----*****/
+.widget {
+  background-color: @BackgroundColor2;
+  border-radius: 10px;
+  border: 1px solid @FourthColor;
+  padding: 15px;
+  margin: 10px 0px;
+}
+
+.widget-buttons-grid {
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background-color: @BackgroundColor2;
+  color: @WhiteColor;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid @FourthColor;
+  margin: 5px;
+  min-width: 80px;
+  min-height: 40px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background-color: @FirstColor;
+  color: @BackgroundColor1;
+  border-color: @FirstColor;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.active {
+  background-color: @SecondColor;
+  color: @BackgroundColor1;
+  border-color: @SecondColor;
+}
+
+/*****----- Volume Widget -----*****/
+.widget-volume {
+  background-color: @BackgroundColor2;
+  border-radius: 10px;
+  border: 1px solid @FourthColor;
+  padding: 15px;
+  margin: 10px 0px;
+}
+
+.widget-volume > box > button {
+  background-color: transparent;
+  color: @WhiteColor;
+  border: none;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.widget-volume > box > button:hover {
+  background-color: @FirstColor;
+  color: @BackgroundColor1;
+  border-radius: 5px;
+}
+
+.widget-volume > box > scale {
+  background-color: transparent;
+  color: @WhiteColor;
+}
+
+.widget-volume > box > scale > trough {
+  background-color: @BackgroundColor1;
+  border-radius: 10px;
+  min-height: 10px;
+}
+
+.widget-volume > box > scale > trough > highlight {
+  background-color: @FirstColor;
+  border-radius: 10px;
+}
+
+.widget-volume > box > scale > trough > slider {
+  background-color: @WhiteColor;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+/*****----- Backlight Widget -----*****/
+.widget-backlight {
+  background-color: @BackgroundColor2;
+  border-radius: 10px;
+  border: 1px solid @FourthColor;
+  padding: 15px;
+  margin: 10px 0px;
+}
+
+.widget-backlight > box > button {
+  background-color: transparent;
+  color: @WhiteColor;
+  border: none;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.widget-backlight > box > button:hover {
+  background-color: @FirstColor;
+  color: @BackgroundColor1;
+  border-radius: 5px;
+}
+
+.widget-backlight > box > scale {
+  background-color: transparent;
+  color: @WhiteColor;
+}
+
+.widget-backlight > box > scale > trough {
+  background-color: @BackgroundColor1;
+  border-radius: 10px;
+  min-height: 10px;
+}
+
+.widget-backlight > box > scale > trough > highlight {
+  background-color: @SecondColor;
+  border-radius: 10px;
+}
+
+.widget-backlight > box > scale > trough > slider {
+  background-color: @WhiteColor;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+/*****----- MPRIS Widget -----*****/
+.widget-mpris {
+  background-color: @BackgroundColor2;
+  border-radius: 10px;
+  border: 1px solid @FourthColor;
+  padding: 15px;
+  margin: 10px 0px;
+}
+
+.widget-mpris-player {
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.widget-mpris-title {
+  color: @WhiteColor;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.widget-mpris-subtitle {
+  color: @ThirdColor;
+  font-size: 12px;
+}
+
+.widget-mpris > box > button {
+  background-color: @BackgroundColor1;
+  color: @WhiteColor;
+  border: 1px solid @FourthColor;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.widget-mpris > box > button:hover {
+  background-color: @FirstColor;
+  color: @BackgroundColor1;
+  border-color: @FirstColor;
+}
+
+/*****----- Scrollbar -----*****/
+scrollbar {
+  background-color: @BackgroundColor2;
+  border-radius: 10px;
+  border: 1px solid @FourthColor;
+  padding: 2px;
+  margin: 0px;
+}
+
+scrollbar > slider {
+  background-color: @ThirdColor;
+  border-radius: 8px;
+  border: none;
+  min-width: 8px;
+}
+
+scrollbar > slider:hover {
+  background-color: @FirstColor;
+}
+
+/*****----- Blank Window -----*****/
+.blank-window {
+  background-color: transparent;
+}
+
+/*****----- Floating Notifications -----*****/
+.floating-notifications {
+  background-color: transparent;
+}
+
+.floating-notifications .notification {
+  background-color: @BackgroundColor2;
+  border-radius: 10px;
+  border: 2px solid @FourthColor;
+  padding: 15px;
+  margin: 10px;
+}
+
+.floating-notifications .notification.critical {
+  background-color: #4a2c2a;
+  border-color: #ff6b6b;
+}
+
+.floating-notifications .notification:hover {
+  background-color: @ThirdColor;
+  border-color: @FirstColor;
+}

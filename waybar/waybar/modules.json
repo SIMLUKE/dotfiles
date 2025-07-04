@@ -148,12 +148,7 @@
       "children-class": "not-memory",
       "transition-left-to-right": false
     },
-    "modules": [
-      "memory",
-      "cpu",
-      "custom/temperature_cpu",
-      "disk"
-    ]
+    "modules": ["memory", "cpu", "custom/temperature_cpu", "disk"]
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -166,5 +161,21 @@
   "custom/cava_mviz": {
     "exec": "$HOME/.config/waybar/scripts/cava.sh",
     "format": "{}"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "",
+      "none": "",
+      "dnd-notification": "󰵙",
+      "dnd-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }
