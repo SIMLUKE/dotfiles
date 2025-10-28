@@ -106,7 +106,7 @@ shotwin() {
 }
 
 shotarea() {
-    grim -g "$(slurp -b e3eaf699)" "$dir/$file"
+    grim -g "$(slurp -b 40414a99 -c dba8e4)" "$dir/$file"
     copy_shot
     notify_view
 }

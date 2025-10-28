@@ -24,14 +24,14 @@ video/x-matroska=mpv.desktop
 video/webm=mpv.desktop
 video/ogg=mpv.desktop
 
-application/pdf=firefox.desktop
-application/epub+zip=firefox.desktop
-application/x-extension-pdf=firefox.desktop
+application/pdf=zen.desktop
+application/epub+zip=zen.desktop
+application/x-extension-pdf=zen.desktop
 
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
-x-scheme-handler/mailto=firefox.desktop
-x-scheme-handler/webcal=firefox.desktop
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
+x-scheme-handler/mailto=zen.desktop
+x-scheme-handler/webcal=zen.desktop
 x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
@@ -43,5 +43,5 @@ application/json=neovide.desktop;
 image/jpeg=feh.desktop;
 image/png=feh.desktop;
 video/mp4=mpv.desktop;
-application/pdf=firefox.desktop;
+application/pdf=zen.desktop;
 

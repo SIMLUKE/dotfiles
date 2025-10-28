@@ -118,7 +118,7 @@
     "on-click": "playerctl previous track"
   },
   "cpu": {
-    "format": "{usage}% 󰻠",
+    "format": "󰻠 {usage}%",
     "on-click": "alacritty -e htop"
   },
   "custom/temperature_gpu": {

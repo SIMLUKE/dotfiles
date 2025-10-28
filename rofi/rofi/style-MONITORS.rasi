@@ -1,12 +1,3 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Rofi Theme File
- * Rofi Version: 1.7.3
- **/
-
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
@@ -16,19 +7,20 @@ configuration {
 @import                          "~/.config/colors/MainColors.rasi"
 
 /*
-USE_BUTTONS=YES
+Monitor Manager Theme
 */
 
 /*****----- Main Window -----*****/
 window {
     /* properties for window widget */
     transparency:                "real";
-    location:                    northwest;
-    anchor:                      northwest;
+    location:                    center;
+    anchor:                      center;
     fullscreen:                  false;
-    width:                       400px;
-    x-offset:                    10px;
-    y-offset:                    10px;
+    width:                       500px;
+    height:                      630px;
+    x-offset:                    0px;
+    y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -46,18 +38,18 @@ mainbox {
     enabled:                     true;
     spacing:                     15px;
     margin:                      0px;
-    padding:                     10px;
+    padding:                     15px;
     border:                      0px solid;
     border-radius:               5px;
     border-color:                @selected;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
+    children:                    [ "inputbar", "listview", "mode-switcher" ];
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
-    spacing:                     5px;
+    spacing:                     10px;
     margin:                      0px;
     padding:                     0px;
     border:                      0px;
@@ -65,7 +57,7 @@ inputbar {
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", "prompt"];
+    children:                    [ "textbox-prompt-colon", "prompt", "entry" ];
 }
 
 dummy {
@@ -75,18 +67,32 @@ dummy {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
+    str:                         "󰍹";
     padding:                     12px 15px 12px 12px;
     border-radius:               4px;
     background-color:            @urgent;
     text-color:                  @background;
+    font:                        "JetBrains Mono Nerd Font 16";
 }
+
 prompt {
     enabled:                     true;
     padding:                     12px;
     border-radius:               4px;
     background-color:            @active;
     text-color:                  @background;
+    font:                        "JetBrains Mono Bold 11";
+}
+
+entry {
+    enabled:                     true;
+    padding:                     12px;
+    border-radius:               4px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    cursor:                      text;
+    placeholder:                 "Search monitors...";
+    placeholder-color:           @foreground;
 }
 
 /*****----- Message -----*****/
@@ -100,15 +106,17 @@ message {
     background-color:            @background-alt;
     text-color:                  @foreground;
 }
+
 textbox {
     background-color:            inherit;
     text-color:                  inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.5;
+    horizontal-align:            0.0;
     placeholder-color:           @foreground;
     blink:                       true;
     markup:                      true;
 }
+
 error-message {
     padding:                     12px;
     border:                      0px solid;
@@ -121,11 +129,11 @@ error-message {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     4;
-    lines:                       1;
+    columns:                     1;
+    lines:                       12;
     cycle:                       true;
     dynamic:                     true;
-    scrollbar:                   false;
+    scrollbar:                   true;
     layout:                      vertical;
     reverse:                     false;
     fixed-height:                true;
@@ -142,10 +150,18 @@ listview {
     cursor:                      "default";
 }
 
+scrollbar {
+    width:                       4px;
+    border:                      0px;
+    handle-color:                @selected;
+    handle-width:                4px;
+    background-color:            @background-alt;
+}
+
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     0px;
+    spacing:                     10px;
     margin:                      0px;
     padding:                     12px 18px 12px 12px;
     border:                      0px solid;
@@ -155,15 +171,107 @@ element {
     text-color:                  @foreground;
     cursor:                      pointer;
 }
-element-text {
-    font:                        "feather bold 32";
+
+element normal.normal {
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+element normal.urgent {
+    background-color:            @urgent;
+    text-color:                  @background;
+}
+
+element normal.active {
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element selected.urgent {
+    background-color:            @urgent;
+    text-color:                  @background;
+}
+
+element selected.active {
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+element alternate.normal {
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+element alternate.urgent {
+    background-color:            @urgent;
+    text-color:                  @background;
+}
+
+element alternate.active {
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+element-icon {
     background-color:            transparent;
     text-color:                  inherit;
+    size:                        24px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.5;
+    horizontal-align:            0.0;
+    font:                        "JetBrains Mono 11";
 }
-element selected.normal {
-    background-color:            var(selected);
-    text-color:                  var(background);
+
+/*****----- Mode Switcher -----*****/
+mode-switcher {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               4px;
+    border-color:                @selected;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+button {
+    padding:                     8px 12px;
+    border:                      0px solid;
+    border-radius:               4px;
+    border-color:                @selected;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+button selected {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+
+/* Custom styling for different monitor actions */
+element.monitor-list {
+    background-color:            @background-alt;
+}
+
+element.monitor-control {
+    background-color:            @background-alt;
+}
+
+element.monitor-config {
+    background-color:            @background-alt;
 }

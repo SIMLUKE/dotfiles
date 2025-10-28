@@ -54,7 +54,7 @@
   background-color: @BackgroundColor2;
   border-radius: 10px;
   border: 1px solid @FourthColor;
-  padding: 15px;
+  padding: 5px;
   margin: 10px 0px;
 }
 
@@ -431,10 +431,9 @@ scrollbar > slider:hover {
 
 .floating-notifications .notification {
   background-color: @BackgroundColor2;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid @FourthColor;
-  padding: 15px;
-  margin: 10px;
+  padding: 5px;
 }
 
 .floating-notifications .notification.critical {

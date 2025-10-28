@@ -73,20 +73,6 @@ require("scrollEOF").setup({
 
 require("mini.surround").setup({})
 
-require("nvim-treesitter.configs").setup({
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
-  modules = {},
-  sync_install = false,
-
-  auto_install = true,
-
-  ignore_install = {},
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-})
-
 require("neo-tree").setup({
   event_handlers = {
     {
@@ -126,6 +112,27 @@ require("lspconfig").bashls.setup({})
 require("lspconfig").clangd.setup({
   root_dir = nvim_lsp.util.root_pattern("compile_flags.txt", "CMakeLists.txt", "Makefile", ".git"),
 })
+
+--local venv_full = vim.fn.systemlist("poetry env info -p")[1]
+--local venv_path = venv_full:match("(.*)/[^/]+")
+--local venv_name = venv_full:match(".*/([^/]+)$")
+--
+--local write_cfg_cmd = 'echo \'{ "venv": "' .. venv_name .. "\" }' > pyrightconfig.json"
+--vim.fn.system(write_cfg_cmd)
+--
+--require("lspconfig").lspconfig.pyright.setup({
+--  on_attach = on_attach,
+--  settings = {
+--    python = {
+--      venvPath = venv_path,
+--      analysis = {
+--        autoImportCompletions = false,
+--        typeCheckingMode = "off",
+--      },
+--    },
+--  },
+--})
+--
 
 require("lspconfig").pyright.setup({
   settings = {

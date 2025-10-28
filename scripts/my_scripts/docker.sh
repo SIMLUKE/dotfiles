@@ -1,5 +1,4 @@
 #!/bin/bash
-# Specify destination folder to mount your project into docker
 
 e=false
 f=false
@@ -9,36 +8,66 @@ GREEN="\e[32m"
 YELLOW="\e[33m"
 ENDCOLOR="\e[0m"
 LIGHT_CYAN="\e[96m"
-DEST_FOLDER=/usr/app
 
 print_usage() {
     printf "Usage:
-    -e epitech image
-    -z enhanced epitech image
-    -f fedora image
+    docker.sh
+        -e | (epitech image) 
+        -z | (enhanced epitech image)
+        -f | (fedora image)
+        -i   [dockerImageName](Dockerfile)
+    [-v] [destination] (volume with the current directory)
+    [-p] [port]
+    [-n] (Network enabled or not)
+    [-r] (Run as root)
 "
 }
 
-while getopts ':efz' flag; do
-    case "${flag}" in
+v=
+network=
+image=
+port=
+user="--user $(id -u):$(id -g)"
+
+while getopts efnzi:v:p: name; do
+    case $name in
     e) e=true ;;
     f) f=true ;;
     z) z=true ;;
-    *)
+    r) user="" ;;
+    i)
+        i=true
+        image="$OPTARG"
+        ;;
+    v) v="-v .:$OPTARG" ;;
+    p) port="-p $OPTARG:$OPTARG" ;;
+    n) network="--network none" ;;
+    ?)
         print_usage
         exit 1
         ;;
     esac
 done
 
+run_args="$port $v $network $user"
+echo $run_args
+
 if [ "$e" = true ]; then
-    docker run -p 4242:4242 --rm -v ".:$DEST_FOLDER" -it epitechcontent/epitest-docker /bin/bash
+    docker run --rm $run_args -it epitechcontent/epitest-docker /bin/bash
+    exit $?
+fi
+
+if [ "$i" = true ]; then
+    docker build -t $image . && docker run $run_args -it $image
+    exit $?
 fi
 
 if [ "$f" = true ]; then
-    docker run --rm -v ".:$DEST_FOLDER" -it fedora /bin/bash
+    docker run --rm $run_args -it fedora /bin/bash
+    exit $?
 fi
 
 if [ "$z" = true ]; then
-    docker run --rm -v ".:$DEST_FOLDER" -it ziad0/enhanced-epitest /bin/bash
+    docker run --rm $run_args -it ziad0/enhanced-epitest /bin/bash
+    exit $?
 fi

@@ -1,11 +1,14 @@
 {
   "extras": [
     "lazyvim.plugins.extras.lang.cmake",
-    "lazyvim.plugins.extras.lang.haskell"
+    "lazyvim.plugins.extras.lang.git",
+    "lazyvim.plugins.extras.lang.go",
+    "lazyvim.plugins.extras.lang.haskell",
+    "lazyvim.plugins.extras.lang.rust"
   ],
   "install_version": 7,
   "news": {
-    "NEWS.md": "10960"
+    "NEWS.md": "11866"
   },
   "version": 8
 }

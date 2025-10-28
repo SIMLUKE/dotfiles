@@ -21,6 +21,7 @@ configuration {
 	steal-focus: false;
 /*	dpi: -1;*/
 
+    kb-accept-custom: "Control+[66]";
 	/*---------- Matching setting ----------*/
 	matching: "normal";
 	tokenize: true;

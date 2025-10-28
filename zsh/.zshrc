@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:"$HOME/my_scripts/"
+export CHROME_EXECUTABLE=$(which chromium)
 
 # Modifier for bug fixes
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -74,7 +75,8 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
  export BROWSER=zen-browser
 
 # SSH
-eval "$(ssh-agent)" ; ssh-add ~/.ssh/id_stud 
+eval "$(ssh-agent)" &> /dev/null ; ssh-add ~/.ssh/id_stud &> /dev/null
+
 
 # Gui use of emacs
 ne() {
@@ -164,3 +166,5 @@ if [ -f '/home/lukeskieur/programs/google-cloud-sdk/completion.zsh.inc' ]; then 
 
 
 [ -f "/home/lukeskieur/.ghcup/env" ] && . "/home/lukeskieur/.ghcup/env" # ghcup-env
+
+alias emacs='emacs -nw'
