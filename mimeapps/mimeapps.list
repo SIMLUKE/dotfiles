@@ -1,18 +1,18 @@
 [Default Applications]
-text/plain=neovide.desktop
-text/x-csrc=neovide.desktop
-text/x-chdr=neovide.desktop
-text/x-c++src=neovide.desktop
-text/x-c++hdr=neovide.desktop
-text/x-python=neovide.desktop
-text/x-shellscript=neovide.desktop
-application/json=neovide.desktop
-application/javascript=neovide.desktop
-text/markdown=neovide.desktop
-application/xml=neovide.desktop
-text/x-rust=neovide.desktop
-text/x-go=neovide.desktop
-application/x-yaml=neovide.desktop
+text/plain=nvim.desktop
+text/x-csrc=nvim.desktop
+text/x-chdr=nvim.desktop
+text/x-c++src=nvim.desktop
+text/x-c++hdr=nvim.desktop
+text/x-python=nvim.desktop
+text/x-shellscript=nvim.desktop
+application/json=nvim.desktop
+application/javascript=nvim.desktop
+text/markdown=nvim.desktop
+application/xml=nvim.desktop
+text/x-rust=nvim.desktop
+text/x-go=nvim.desktop
+application/x-yaml=nvim.desktop
 
 image/jpeg=feh.desktop
 image/png=feh.desktop
@@ -24,24 +24,24 @@ video/x-matroska=mpv.desktop
 video/webm=mpv.desktop
 video/ogg=mpv.desktop
 
-application/pdf=zen.desktop
-application/epub+zip=zen.desktop
-application/x-extension-pdf=zen.desktop
+application/pdf=zen-browser.desktop
+application/epub+zip=zen-browser.desktop
+application/x-extension-pdf=zen-browser.desktop
 
-x-scheme-handler/http=zen.desktop
-x-scheme-handler/https=zen.desktop
-x-scheme-handler/mailto=zen.desktop
-x-scheme-handler/webcal=zen.desktop
+x-scheme-handler/http=zen-browser.desktop
+x-scheme-handler/https=zen-browser.desktop
+x-scheme-handler/mailto=zen-browser.desktop
+x-scheme-handler/webcal=zen-browser.desktop
 x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
-text/plain=neovide.desktop;
-text/x-csrc=neovide.desktop;
-text/x-chdr=neovide.desktop;
-text/x-python=neovide.desktop;
-application/json=neovide.desktop;
+text/plain=nvim.desktop;
+text/x-csrc=nvim.desktop;
+text/x-chdr=nvim.desktop;
+text/x-python=nvim.desktop;
+application/json=nvim.desktop;
 image/jpeg=feh.desktop;
 image/png=feh.desktop;
 video/mp4=mpv.desktop;
-application/pdf=zen.desktop;
+application/pdf=zen-browser.desktop;
 

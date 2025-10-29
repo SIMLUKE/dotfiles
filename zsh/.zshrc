@@ -1,22 +1,15 @@
+# Source environment configuration
+for file in ~/.config/env.d/*.sh; do
+    [ -r "$file" ] && source "$file"
+done
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:"$HOME/my_scripts/"
-export CHROME_EXECUTABLE=$(which chromium)
 
-# Modifier for bug fixes
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-
-# export TERM=xterm-24bits
-QT_QPA_PLATFORM=xcb
+# History configuration
 HIST_STAMPS="mm/dd/yyyy"
-export RANGER_LOAD_DEFAULT_RC="FALSE"
-
-# Installed paths
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:"$HOME/.cargo/bin/"
-export PATH="$PATH:/home/lukeskieur/.local/bin"
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
 
 # Cool themes
 #ZSH_THEME="robbyrussell"
@@ -63,19 +56,12 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Preference
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
- else
-   export EDITOR='nvim'
- fi
- export BROWSER=zen-browser
-
-# SSH
-eval "$(ssh-agent)" &> /dev/null ; ssh-add ~/.ssh/id_stud &> /dev/null
+# SSH agent (avoid multiple instances)
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" &> /dev/null
+fi
+ssh-add ~/.ssh/id_stud &> /dev/null 2>&1
 
 
 # Gui use of emacs

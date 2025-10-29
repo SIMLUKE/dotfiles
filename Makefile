@@ -39,6 +39,7 @@ PACKAGES	=	cmake	\
 			rofi-wayland	\
 			ranger	\
 			hyprlock	\
+			cliphist	\
 
 YAY_PACKAGES	=	deezer	\
 			swww	\
@@ -54,7 +55,18 @@ FLATPAK_PACKAGES	=	pwvucontrol	\
 
 NPM_PACKAGES	=	bashls	\
 
-all: _zsh _zsh_custom _swaylock _swaync _wofi _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall _spicetify _mako _nyxt _neovim _colors _clang_conf
+all: _xdg_dirs _zsh _zsh_custom _swaync _mimeapps _rofi _hyprland _scripts _waybar _kitty _my_dwall  _neovim _colors _clang_conf
+
+_xdg_dirs:
+	@echo "Creating XDG-compliant directories..."
+	@mkdir -p $(HOME)/.local/state/zsh
+	@mkdir -p $(HOME)/.local/state/less
+	@mkdir -p $(HOME)/.local/share/cargo
+	@mkdir -p $(HOME)/.local/share/rustup
+	@mkdir -p $(HOME)/.local/share/go
+	@mkdir -p $(HOME)/.config/npm
+	@mkdir -p $(HOME)/.config/docker
+	@mkdir -p $(HOME)/.config/python
 
 _zsh:
 	$(STOW) --target=$(HOME) --restow zsh
@@ -72,14 +84,8 @@ _emacs:
 	rm ~/.emacs.default/own_conf/conf.el
 	$(STOW) --target=$(HOME) --restow emacs
 
-_swaylock:
-	$(STOW) --target=$(DOT_CONF) --restow swaylock
-
 _swaync:
 	$(STOW) --target=$(DOT_CONF) --restow swaync
-
-_wofi:
-	$(STOW) --target=$(DOT_CONF) --restow wofi
 
 _rofi:
 	$(STOW) --target=$(DOT_CONF) --restow rofi
@@ -99,14 +105,8 @@ _mimeapps:
 _waybar:
 	$(STOW) --target=$(DOT_CONF) --restow waybar
 
-_wpaperd:
-	$(STOW) --target=$(DOT_CONF) --restow wp_manager
-
 _kitty:
 	$(STOW) --target=$(DOT_CONF) --restow kitty
-
-_nyxt:
-	$(STOW) --target=$(DOT_CONF) --restow nyxt
 
 _neovim:
 	$(STOW) --target=$(DOT_CONF) --restow neovim
@@ -117,21 +117,8 @@ _my_dwall:
 _spicetify:
 	echo "pls fix spotify"
 
-_mako:
-	$(STOW) --target=$(DOT_CONF) --restow mako
-
 _colors:
 	$(STOW) --target=$(DOT_CONF) --restow colors
-
-_sddm:
-	sudo cp sddm/sddm.conf /etc/
-	sudo cp sddm/theme.conf /usr/share/sddm/themes/sugar-dark/
-	sudo cp sddm/Background.png /usr/share/sddm/themes/sugar-dark/
-	sudo cp sddm/Xsetup /usr/share/sddm/scripts/Xsetup
-
-wpaperd_install:
-	git clone https://github.com/danyspin97/wpaperd
-	cd ./wpaperd ; cargo build --release ; cargo install --path="./daemon" && cargo install --path="./cli"
 
 yay_install:
 	git clone https://aur.archlinux.org/yay.git
@@ -149,6 +136,18 @@ flatpak_dependencies:
 npm_dependencies:
 	sudo npm -g i $(NPM_PACKAGES)
 
-sys_calls:
-	sudo systemctl enable bluetooth
-	sudo systemctl start bluetooth
+.PHONY: backup
+backup:
+	@echo "Creating backup..."
+	@tar -czf $(HOME)/dotfiles-backup-$$(date +%Y%m%d-%H%M%S).tar.gz .
+
+.PHONY: check
+check:
+	@echo "Checking for broken symlinks in .config..."
+	@find $(HOME)/.config -xtype l 2>/dev/null || echo "No broken symlinks found"
+
+.PHONY: clean
+clean:
+	@echo "Removing dead symlinks..."
+	@find $(HOME)/.config -xtype l -delete 2>/dev/null || echo "No broken symlinks to remove"
+

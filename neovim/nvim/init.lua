@@ -8,11 +8,8 @@ require("conform").setup({
     typescript = { "prettierd", "prettier", stop_after_first = true },
     json = { "prettierd", "prettier", stop_after_first = true },
     css = { "prettierd", "prettier", stop_after_first = true },
-    c = { "clang-format", "clang-format", stop_after_first = true },
+    c = { "clang-format", stop_after_first = true },
   },
-})
-
-require("conform").setup({
   format_on_save = {
     timeout_ms = 500,
     lsp_format = "fallback",
