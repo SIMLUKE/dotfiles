@@ -53,6 +53,7 @@ run_args="$port $v $network $user"
 echo $run_args
 
 if [ "$e" = true ]; then
+    docker pull epitechcontent/epitest-docker
     docker run --rm $run_args -it epitechcontent/epitest-docker /bin/bash
     exit $?
 fi
@@ -68,6 +69,7 @@ if [ "$f" = true ]; then
 fi
 
 if [ "$z" = true ]; then
+    docker pull ziad0/enhanced-epitest
     docker run --rm $run_args -it ziad0/enhanced-epitest /bin/bash
     exit $?
 fi

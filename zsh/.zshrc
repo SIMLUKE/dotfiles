@@ -1,15 +1,8 @@
-# Source environment configuration
 for file in ~/.config/env.d/*.sh; do
     [ -r "$file" ] && source "$file"
 done
 
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-# History configuration
-HIST_STAMPS="mm/dd/yyyy"
-setopt HIST_IGNORE_SPACE
-setopt HIST_EXPIRE_DUPS_FIRST
 
 # Cool themes
 #ZSH_THEME="robbyrussell"
@@ -55,9 +48,14 @@ plugins=(
     zsh-vi-mode
 )
 
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
 source $ZSH/oh-my-zsh.sh
 
-# SSH agent (avoid multiple instances)
+setopt HIST_IGNORE_SPACE 
+HISTORY_IGNORE="(opencode|cd *|ls|ls *|ll|ll *|pwd|clear|exit)"  
+
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s)" &> /dev/null
 fi
@@ -88,8 +86,8 @@ get_core() {
 update_zsh() {
     rm ~/.oh-my-zsh/custom
     omz update
-    rm ~/.oh-my-zsh/custom
-    make -C ~/dotfiles
+    rm -rf ~/.oh-my-zsh/custom
+    make -C ~/Dotfiles
     source ~/.zshrc
 }
 
@@ -109,27 +107,19 @@ zl() {
 alias cp='cp -r'
 #alias cat='bat'
 alias sl='ls'
+alias epiclang='clang'
+alias emacs='emacs -nw'
 
 # Faliases
 alias fman='compgen -c | fzf | xargs man'
-alias fhistory='history | cut -c 8- | fzf'
+alias fhistory='history | cut -c 8- | fzf | wl-copy'
 
 # Aliases
-alias pip='./.venv/bin/pip'
-alias py_create_venv='python -m venv .venv'
-alias gdba='gdb --args'
 alias dot='cd ~/Dotfiles'
-alias mkdb='make debug -s'
-alias mkBIGdb='make debug_w_libs debug -s'
 alias cacabomb='v=0;while [[ $v != "5" ]];do cacademo &;v=$((value+1));done'
 alias rotate_normal='wlr-randr --output eDP-1 --transform normal'
 alias rotate_up='wlr-randr --output eDP-1 --transform 180'
 alias remove_package='yay -Qe | fzf -m | cut -d " " -f 1 | xargs yay -Rns --noconfirm'
-wipe_docker() {
-    docker-compose down
-    docker system prune -a
-}
-alias cleanAtess='prettier --write . ; ruff check --fix ; ruff format'
 alias spellfr='hunspell -d fr_FR'
 alias spellen='hunspell'
 alias vencord='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
@@ -139,9 +129,13 @@ alias nv='nvim'
 alias astekmode='eval "$(ssh-agent -s)" ; ssh-add ~/.ssh/id_astek'
 alias o='xdg-open'
 nz() {
-    z $0 ; nv .
+    z $1 ; nv .
 }
 eval "$(zoxide init zsh)"
+alias nd='neovide .'
+copy() {
+    cat $1 | wl-copy
+}
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/lukeskieur/programs/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lukeskieur/programs/google-cloud-sdk/path.zsh.inc'; fi
@@ -153,4 +147,40 @@ if [ -f '/home/lukeskieur/programs/google-cloud-sdk/completion.zsh.inc' ]; then 
 
 [ -f "/home/lukeskieur/.ghcup/env" ] && . "/home/lukeskieur/.ghcup/env" # ghcup-env
 
-alias emacs='emacs -nw'
+# Lazy loading
+export NVM_DIR="$HOME/.config/nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    export PATH="$NVM_DIR/versions/node/$(cat $NVM_DIR/alias/default 2>/dev/null || echo 'system')/bin:$PATH"
+    nvm() {
+        unset -f nvm node npm npx
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+        nvm "$@"
+    }
+    node() {
+        unset -f nvm node npm npx
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        node "$@"
+    }
+    npm() {
+        unset -f nvm node npm npx
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        npm "$@"
+    }
+    npx() {
+        unset -f nvm node npm npx
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        npx "$@"
+    }
+fi
+
+for file in ~/.config/zsh/functions.d/*.sh; do
+    [ -r "$file" ] && source "$file"
+done
+
+# Templates
+project_template_prompt() {
+    if [ -n "$PROJECT_TEMPLATES" ]; then
+        echo "%{$fg[cyan]%}[$PROJECT_TEMPLATES]%{$reset_color%} "
+    fi
+}

@@ -8,6 +8,21 @@
       {
         "language": "cpp",
         "path": "./snippets/cpp.json"
+      },
+      {
+        "language": "c",
+        "path": "./snippets/c.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "typescript",
+          "lua",
+          "python",
+          "rust",
+          "go"
+        ],
+        "path": "./snippets/global.json"
       }
     ]
   }

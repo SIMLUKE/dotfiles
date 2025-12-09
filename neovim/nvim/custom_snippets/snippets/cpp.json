@@ -2,11 +2,128 @@
   "derr": {
     "prefix": "derr",
     "body": ["std::cerr << $0 << std::endl;"],
-    "description": "Debug cout"
+    "description": "Debug error output"
   },
   "dout": {
     "prefix": "dout",
     "body": ["std::cout << $0 << std::endl;"],
-    "description": "Debug cerr"
+    "description": "Debug console output"
+  },
+  "cout": {
+    "prefix": "cout",
+    "body": ["std::cout << \"$1\" << $2 << std::endl;"],
+    "description": "Console output with string"
+  },
+  "fori": {
+    "prefix": "fori",
+    "body": ["for (int ${1:i} = 0; ${1:i} < ${2:n}; ${1:i}++) {", "\t$0", "}"],
+    "description": "For loop with int iterator"
+  },
+  "forr": {
+    "prefix": "forr",
+    "body": ["for (auto& ${1:item} : ${2:container}) {", "\t$0", "}"],
+    "description": "Range-based for loop with reference"
+  },
+  "forc": {
+    "prefix": "forc",
+    "body": ["for (const auto& ${1:item} : ${2:container}) {", "\t$0", "}"],
+    "description": "Range-based for loop with const reference"
+  },
+  "forn": {
+    "prefix": "forn",
+    "body": ["for (${1:init}; ${2:condition}; ${3:increment}) {", "\t$0", "}"],
+    "description": "Custom for loop"
+  },
+
+  "vector": {
+    "prefix": "vec",
+    "body": ["std::vector<${1:int}> ${2:name}$0;"],
+    "description": "Vector declaration"
+  },
+  "map": {
+    "prefix": "map",
+    "body": ["std::map<${1:KeyType}, ${2:ValueType}> ${3:name}$0;"],
+    "description": "Map declaration"
+  },
+  "unordered_map": {
+    "prefix": "umap",
+    "body": ["std::unordered_map<${1:KeyType}, ${2:ValueType}> ${3:name}$0;"],
+    "description": "Unordered map declaration"
+  },
+  "pair": {
+    "prefix": "pair",
+    "body": ["std::pair<${1:FirstType}, ${2:SecondType}> ${3:name}$0;"],
+    "description": "Pair declaration"
+  },
+  "unique_ptr": {
+    "prefix": "uptr",
+    "body": [
+      "std::unique_ptr<${1:Type}> ${2:name} = std::make_unique<${1:Type}>($3);"
+    ],
+    "description": "Unique pointer with make_unique"
+  },
+  "shared_ptr": {
+    "prefix": "sptr",
+    "body": [
+      "std::shared_ptr<${1:Type}> ${2:name} = std::make_shared<${1:Type}>($3);"
+    ],
+    "description": "Shared pointer with make_shared"
+  },
+  "try_catch": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "\t$0",
+      "} catch (const ${1:std::exception}& ${2:e}) {",
+      "\tstd::cerr << ${2:e}.what() << std::endl;",
+      "}"
+    ],
+    "description": "Try-catch block"
+  },
+  "lambda": {
+    "prefix": "lambda",
+    "body": [
+      "auto ${1:name} = [${2:&}](${3:params}) -> ${4:void} {",
+      "\t$0",
+      "};"
+    ],
+    "description": "Lambda function"
+  },
+  "namespace": {
+    "prefix": "ns",
+    "body": ["namespace ${1:name} {", "$0", "} // namespace ${1:name}"],
+    "description": "Namespace definition"
+  },
+  "template_function": {
+    "prefix": "tempfn",
+    "body": [
+      "template <typename ${1:T}>",
+      "${2:void} ${3:functionName}(${4:T ${5:param}}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Template function"
+  },
+  "main": {
+    "prefix": "main",
+    "body": ["int main(int argc, char* argv[]) {", "\t$0", "\treturn 0;", "}"],
+    "description": "Main function"
+  },
+  "include_guard": {
+    "prefix": "guard",
+    "body": [
+      "#ifndef ${1:HEADER_NAME}_HPP",
+      "#define ${1:HEADER_NAME}_HPP",
+      "",
+      "$0",
+      "",
+      "#endif // ${1:HEADER_NAME}_HPP"
+    ],
+    "description": "Include guard"
+  },
+  "pragma_once": {
+    "prefix": "pragma",
+    "body": ["#pragma once", "", "$0"],
+    "description": "Pragma once"
   }
 }

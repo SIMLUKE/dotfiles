@@ -1,1 +1,32 @@
-{}
+{
+  "todo": {
+    "prefix": "todo",
+    "body": ["// TODO: $0"],
+    "description": "TODO comment"
+  },
+  "fixme": {
+    "prefix": "fixme",
+    "body": ["// FIXME: $0"],
+    "description": "FIXME comment"
+  },
+  "note": {
+    "prefix": "note",
+    "body": ["// NOTE: $0"],
+    "description": "NOTE comment"
+  },
+  "hack": {
+    "prefix": "hack",
+    "body": ["// HACK: $0"],
+    "description": "HACK comment"
+  },
+  "timestamp": {
+    "prefix": "timestamp",
+    "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"],
+    "description": "Insert current date"
+  },
+  "datetime": {
+    "prefix": "datetime",
+    "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}"],
+    "description": "Insert current date and time"
+  }
+}

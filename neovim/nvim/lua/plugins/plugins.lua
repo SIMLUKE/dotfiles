@@ -1,55 +1,34 @@
 return {
-  { "natecraddock/workspaces.nvim" },
-  { "lg-epitech/headers.nvim" },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  -- Core dependencies
+  { "nvim-lua/plenary.nvim" },
+  { "hrsh7th/nvim-cmp" },
+  { "notomo/promise.nvim" },
+  { "lewis6991/async.nvim" },
 
-    opts = {},
-  },
-  {
-    "Aasim-A/scrollEOF.nvim",
-    event = { "CursorMoved", "WinScrolled" },
-    opts = {},
-  },
-  {
-    "stevearc/conform.nvim",
-    opts = {},
-  },
-
+  -- Git integration
   {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed.
       "ibhagwan/fzf-lua", -- optional
     },
     config = true,
   },
-  { "hrsh7th/nvim-cmp" },
-  { "notomo/promise.nvim" },
-  { "lewis6991/async.nvim" },
-  {
-    "norcalli/nvim-colorizer.lua",
-  },
-  {
-    "MunifTanjim/eslint.nvim",
-  },
+
+  -- UI enhancements
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
+    opts = {
+      latex = { enabled = false },
+    },
+  },
+  {
+    "folke/trouble.nvim",
     opts = {},
-  },
-  {
-    "nvim-mini/mini.surround",
-  },
-  {
-    "trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     keys = {
       {
@@ -94,6 +73,11 @@ return {
     ft = { "markdown" },
   },
   { "kevinhwang91/nvim-ufo" },
+
+  -- Additional utilities
+  { "lg-epitech/headers.nvim" },
+
+  -- Mason (LSP installer)
   { "mason-org/mason.nvim" },
   { "mason-org/mason-lspconfig.nvim" },
 }

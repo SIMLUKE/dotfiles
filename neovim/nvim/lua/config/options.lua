@@ -2,18 +2,30 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- Scrolling
 vim.opt.scrolloff = 5
 
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
+-- Indentation defaults
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
+-- Line numbers
 -- vim.opt.relativenumber = false
 
+-- LSP log level (reduce logging to prevent large log files)
+vim.lsp.set_log_level("WARN") -- Only log warnings and errors
+
+-- Filetype detection for Hyprlang
+local home = vim.fn.expand("$HOME")
 vim.filetype.add({
   pattern = {
-    ["${HOME}/dotfiles/hyprland/hypr/.*conf"] = "hyprlang",
-    ["${HOME}/dotfiles/hypr/conf/.*conf"] = "hyprlang",
+    [home .. "/Dotfiles/hyprland/hypr/.*%.conf"] = "hyprlang",
+    [home .. "/Dotfiles/hypr/conf/.*%.conf"] = "hyprlang",
+    [".*hypr.*%.conf"] = "hyprlang",
+    [".*%.hl"] = "hyprlang",
   },
 })
+
+vim.o.guifont = "FiraCode Nerd Font:h15"

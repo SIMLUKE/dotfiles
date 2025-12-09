@@ -10,7 +10,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # Make applications respect XDG directories
 export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTFILE="$HOME/.zsh_history"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GOPATH="$XDG_DATA_HOME/go"
