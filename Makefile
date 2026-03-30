@@ -4,7 +4,7 @@ HOME	?=	$$HOME
 
 DOT_CONF	?=	$$HOME/.config/
 
-PACKAGES	=	cmake	\
+PACKAGES	=	\
 			emacs	\
 			neovim	\
 			zsh	\
@@ -40,6 +40,7 @@ PACKAGES	=	cmake	\
 			ranger	\
 			hyprlock	\
 			cliphist	\
+			cava	\
 
 YAY_PACKAGES	=	deezer	\
 			swww	\
