@@ -5,6 +5,32 @@ return {
   { "notomo/promise.nvim" },
   { "lewis6991/async.nvim" },
 
+  -- Merge conflict resolution (VSCode-style: accept current/incoming/both)
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    event = "BufReadPre",
+    opts = {
+      default_mappings = false,
+      default_commands = true,
+      disable_diagnostics = false,
+      list_opener = "copen",
+      highlights = {
+        incoming = "DiffAdd",
+        current = "DiffText",
+      },
+    },
+    keys = {
+      { "<leader>gco", "<cmd>GitConflictChooseOurs<cr>",   desc = "Conflict: Accept Current (ours)" },
+      { "<leader>gct", "<cmd>GitConflictChooseTheirs<cr>", desc = "Conflict: Accept Incoming (theirs)" },
+      { "<leader>gcb", "<cmd>GitConflictChooseBoth<cr>",   desc = "Conflict: Accept Both" },
+      { "<leader>gcn", "<cmd>GitConflictChooseNone<cr>",   desc = "Conflict: Accept None" },
+      { "]x",          "<cmd>GitConflictNextConflict<cr>",  desc = "Conflict: Next" },
+      { "[x",          "<cmd>GitConflictPrevConflict<cr>",  desc = "Conflict: Prev" },
+      { "<leader>gcl", "<cmd>GitConflictListQf<cr>",        desc = "Conflict: List all" },
+    },
+  },
+
   -- Git integration
   {
     "NeogitOrg/neogit",

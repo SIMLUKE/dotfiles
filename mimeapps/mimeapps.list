@@ -33,6 +33,8 @@ x-scheme-handler/https=zen.desktop
 x-scheme-handler/mailto=zen.desktop
 x-scheme-handler/webcal=zen.desktop
 x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/dzr=deezer-desktop.desktop
+x-scheme-handler/deezer=deezer-desktop.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;

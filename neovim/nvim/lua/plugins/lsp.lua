@@ -15,6 +15,37 @@ return {
 
         asm_lsp = {},
 
+        -- Tailwind CSS LSP
+        tailwindcss = {
+          filetypes = {
+            "html",
+            "css",
+            "scss",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "svelte",
+          },
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  -- Support for cn() and clsx() utilities
+                  { "cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                  { "clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                  -- Support for tw prop
+                  { "tw`([^`]*)", "([^`]*)" },
+                  { "tw=\"([^\"]*)", "([^\"]*)" },
+                  { "tw={'([^']*)", "([^']*)" },
+                  { "tw={\"([^\"]*)", "([^\"]*)" },
+                },
+              },
+            },
+          },
+        },
+
         -- Bash LSP
         bashls = {},
 

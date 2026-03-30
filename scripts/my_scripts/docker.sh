@@ -29,7 +29,7 @@ image=
 port=
 user="--user $(id -u):$(id -g)"
 
-while getopts efnzi:v:p: name; do
+while getopts efnrzi:v:p: name; do
     case $name in
     e) e=true ;;
     f) f=true ;;

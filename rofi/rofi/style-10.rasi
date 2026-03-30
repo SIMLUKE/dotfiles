@@ -18,6 +18,7 @@ configuration {
     display-window:             "";
     display-calc:               "󰃬"; 
     display-nerdy:              ""; 
+    //display-rofimoji:           "󰻐"; 
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
